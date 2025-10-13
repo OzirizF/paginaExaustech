@@ -1,9 +1,0 @@
-# Ignore node modules and common build artifacts
-node_modules/
-.pio/
-build/
-*.min.js
-*.min.css
-*.log
-.vscode/
-.DS_Store
