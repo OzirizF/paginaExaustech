@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExAu - Excelência em Soluções</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --dark: #1f2937;
+      --light: #f9fafb;
+      --gray: #6b7280;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
+
+    /* Header & Navigation */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      height: 50px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s ease;
+      padding: 5px 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--dark);
+      transition: all 0.3s ease;
+      border-radius: 3px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: moveGrid 20s linear infinite;
+    }
+
+    @keyframes moveGrid {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      opacity: 0.95;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    .btn {
+      padding: 15px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 80px 20px;
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--dark);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--light);
+      padding: 40px 30px;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+      border-color: var(--primary);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+
+    .feature-card p {
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 80px 20px;
+      background: white;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .about-text p {
+      margin-bottom: 15px;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* Objectives Section */
+    .objectives-section {
+      padding: 80px 20px;
+      background: var(--light);
+    }
+
+    .objectives-list {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .objective-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .objective-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .objective-icon {
+      color: var(--primary);
+      font-size: 1.5rem;
+      min-width: 30px;
+    }
+
+    .objective-item strong {
+      color: var(--primary);
+    }
+
+    /* How it Works Section */
+    .how-works-section {
+      padding: 80px 20px;
+      background: white;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 50px auto 0;
+    }
+
+    .step-card {
+      position: relative;
+      background: var(--light);
+      padding: 40px 30px;
+      border-radius: 15px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .step-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .step-number {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .step-card h3 {
+      margin: 30px 0 15px;
+      color: var(--dark);
+    }
+
+    .step-card p {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 60px 20px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .stat-item p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Team Section */
+    .team-section {
+      padding: 80px 20px;
+      background: var(--light);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .team-member {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .team-member h4 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    .team-member span {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .team-member p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 80px 20px;
+      background: white;
+    }
+
+    .contact-form {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+    }
+    .btn-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+
+    /* Animation on Scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      nav.active {
+        max-height: 300px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-item h3 {
+        font-size: 2.5rem;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav-wrapper">
+        <img src="logo.png" alt="ExAu Logo" class="logo">
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <nav id="mainNav">
+          <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#servicos">Benefícios</a></li>
+            <li><a href="#sobre">A Solução</a></li>
+            <li><a href="#como-funciona">Como Funciona</a></li>
+            <li><a href="#objetivos">Objetivos</a></li>
+            <li><a href="#equipe">Equipe</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Sistema ExAu</h1>
+      <p>Monitoramento Inteligente de Exaustores para Painéis Elétricos</p>
+      <div class="cta-buttons">
+        <a href="#sobre" class="btn btn-primary">Conheça a Solução</a>
+        <a href="#contato" class="btn btn-outline">Solicite um Orçamento</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <h3>100%</h3>
+        <p>Prevenção de Falhas</p>
+      </div>
+      <div class="stat-item reveal" style="transition-delay: 0.1s;">
+        <h3>24/7</h3>
+        <p>Monitoramento Contínuo</p>
+      </div>
+      <div class="stat-item reveal" style="transition-delay: 0.2s;">
+        <h3>IoT</h3>
+        <p>Conectividade Avançada</p>
+      </div>
+      <div class="stat-item reveal" style="transition-delay: 0.3s;">
+        <h3>Web</h3>
+        <p>Interface Moderna</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="servicos">
+    <h2 class="section-title reveal">Por que nosso sistema é essencial?</h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+        </div>
+        <h3>Segurança e Prevenção</h3>
+        <p>Previne sobreaquecimento, falhas críticas e riscos de incêndio, garantindo a operação segura dos seus equipamentos.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay: 0.1s;">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><path d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg>
+        </div>
+        <h3>Eficiência e Vida Útil</h3>
+        <p>Assegura a operação estável dos painéis elétricos e aumenta a vida útil dos componentes com um custo-benefício imbatível.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay: 0.2s;">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"></path></svg>
+        </div>
+        <h3>Inovação e Controle</h3>
+        <p>Monitore, receba alertas e gerencie seus equipamentos remotamente através de uma interface web moderna e notificações em tempo real.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section" id="sobre">
+    <div class="about-content container">
+      <div class="about-text reveal">
+        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">A Solução Definitiva</h2>
+        <h3>Monitoramento Inteligente para Painéis Elétricos</h3>
+        <p><strong>O Problema:</strong> A ventilação é indispensável para garantir a operação segura e confiável de painéis elétricos. Atualmente, quando um exaustor falha ou trava, ele permanece energizado sem aviso ao operador, aumentando significativamente os riscos de superaquecimento, danos a componentes eletrônicos sensíveis e até mesmo incêndios.</p>
+        <p><strong>Nossa Solução:</strong> O Sistema ExAu é um protótipo inovador que monitora continuamente o funcionamento do exaustor através de sensores de rotação e temperatura. O sistema sinaliza falhas tanto localmente (visual e sonoro) quanto remotamente, desliga automaticamente o equipamento em caso de anomalia e oferece uma interface web completa para configuração e gerenciamento.</p>
+        <p><strong>Investimento inteligente:</strong> Custo-benefício imbatível comparado aos danos evitados e à segurança garantida.</p>
+      </div>
+      <div class="about-image reveal" style="transition-delay: 0.2s;">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920&auto=format&fit=crop" alt="Painel elétrico com sistema de monitoramento">
+      </div>
+    </div>
+  </section>
+
+  <section class="how-works-section" id="como-funciona">
+    <div class="container">
+      <h2 class="section-title reveal">Como Funciona</h2>
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-number">1</div>
+          <h3>Detecção</h3>
+          <p>Sensores monitoram continuamente a rotação do exaustor e a temperatura do painel elétrico.</p>
+        </div>
+        <div class="step-card reveal" style="transition-delay: 0.1s;">
+          <div class="step-number">2</div>
+          <h3>Análise</h3>
+          <p>O sistema processa os dados em tempo real e identifica qualquer anomalia no funcionamento.</p>
+        </div>
+        <div class="step-card reveal" style="transition-delay: 0.2s;">
+          <div class="step-number">3</div>
+          <h3>Alerta</h3>
+          <p>Sinalização visual e sonora local + notificações remotas via WhatsApp, Telegram ou e-mail.</p>
+        </div>
+        <div class="step-card reveal" style="transition-delay: 0.3s;">
+          <div class="step-number">4</div>
+          <h3>Proteção</h3>
+          <p>Desligamento automático do exaustor em caso de falha crítica, prevenindo danos maiores.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="objectives-section" id="objetivos">
+    <div class="container">
+      <h2 class="section-title reveal">Nossos Objetivos Técnicos</h2>
+      <div class="objectives-list">
+        <div class="objective-item reveal">
+          <div class="objective-icon">✓</div>
+          <p><strong>Detectar falhas precisas:</strong> Utilização de sensores de rotação/parada e temperatura para identificar imediatamente quando o exaustor para de funcionar ou apresenta comportamento anormal.</p>
+        </div>
+        <div class="objective-item reveal" style="transition-delay: 0.1s;">
+          <div class="objective-icon">✓</div>
+          <p><strong>Sinalização eficiente:</strong> Implementação de alertas visuais (LEDs) e sonoros (buzzer) para notificação local imediata de qualquer falha detectada.</p>
+        </div>
+        <div class="objective-item reveal" style="transition-delay: 0.2s;">
+          <div class="objective-icon">✓</div>
+          <p><strong>Controle eletrônico inteligente:</strong> Capacidade de controlar a alimentação elétrica do exaustor, incluindo desligamento automático programável em caso de detecção de falha crítica.</p>
+        </div>
+        <div class="objective-item reveal" style="transition-delay: 0.3s;">
+          <div class="objective-icon">✓</div>
+          <p><strong>Notificações em tempo real:</strong> Sistema de alertas remotos via Wi-Fi integrado com WhatsApp, Telegram e e-mail para notificação instantânea da equipe de manutenção.</p>
+        </div>
+        <div class="objective-item reveal" style="transition-delay: 0.4s;">
+          <div class="objective-icon">✓</div>
+          <p><strong>Interface web centralizada:</strong> Página de configuração acessível remotamente permitindo ajuste de limites de temperatura, calibração de sensores, histórico de eventos e gerenciamento completo do sistema.</p>
+        </div>
+        <div class="objective-item reveal" style="transition-delay: 0.5s;">
+          <div class="objective-icon">✓</div>
+          <p><strong>Evolução contínua:</strong> Arquitetura preparada para migração futura para hardware dedicado, reduzindo custos de produção e aumentando a robustez do sistema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section" id="equipe">
+    <div class="container">
+      <h2 class="section-title reveal">Nossa Equipe Especializada</h2>
+      <div class="team-grid">
+        <div class="team-member reveal">
+          <h4>Osmar da Silva Junior</h4>
+          <span>Gerência Organizacional / Operacional</span>
+          <p>Responsável por coordenar a equipe, gerir recursos e prazos, definir metodologias de trabalho e garantir a qualidade final do serviço entregue.</p>
+        </div>
+        <div class="team-member reveal" style="transition-delay: 0.1s;">
+          <h4>Franciel Paulino da Silva</h4>
+          <span>Engenharia de Produto / P&D</span>
+          <p>Projeta e aprimora hardware e firmware, desenvolve a interface web, pesquisa novas tecnologias e busca soluções inovadoras para o sistema.</p>
+        </div>
+        <div class="team-member reveal" style="transition-delay: 0.2s;">
+          <h4>Claudevan de Lima</h4>
+          <span>Gestão Financeira</span>
+          <p>Controla custos do projeto, elabora orçamentos detalhados, define estratégias de precificação e gerencia o fluxo de caixa da operação.</p>
+        </div>
+        <div class="team-member reveal" style="transition-delay: 0.3s;">
+          <h4>Jadson Barreto Silva</h4>
+          <span>Instalação e Suporte Técnico</span>
+          <p>Realiza instalações em campo, executa manutenção preventiva e corretiva, oferece suporte técnico e treina clientes no uso do sistema.</p>
+        </div>
+        <div class="team-member reveal" style="transition-delay: 0.4s;">
+          <h4>Kael Victor Fernandes Silva</h4>
+          <span>Marketing e Comunicação</span>
+          <p>Desenvolve estratégias de divulgação do produto, cria campanhas e materiais de apresentação, e gerencia toda a comunicação com clientes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contato">
+    <div class="container">
+      <h2 class="section-title reveal">Solicite um Orçamento</h2>
+      <div class="contact-form reveal">
+        <form>
+          <div class="form-group">
+            <label for="name">Nome Completo</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail Corporativo</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="message">Como podemos ajudar?</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-submit">Enviar Solicitação</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 ExAu - Sistema de Monitoramento Inteligente. Todos os direitos reservados.</p>
+      <div class="social-links">
+        <a href="#" aria-label="LinkedIn" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram" title="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" aria-label="WhatsApp" title="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </a>
+        <a href="#" aria-label="E-mail" title="E-mail">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('active');
+    }
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('mainNav').classList.remove('active');
+        }
+      });
+    });
+
+    // Animation on scroll
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => {
+      revealObserver.observe(el);
+    });
+  </script>
+</body>
+</html>
