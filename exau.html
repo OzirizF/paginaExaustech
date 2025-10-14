@@ -188,6 +188,27 @@
       font-size: 1rem;
     }
 
+    /* Toggle buttons for Comercial/Técnico */
+    .toggle-btn {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .toggle-btn:hover {
+      background: rgba(99,102,241,0.06);
+    }
+
+    .toggle-btn.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.18);
+      border-color: var(--primary);
+    }
+
     .btn-primary {
       background: white;
       color: var(--primary);
@@ -626,6 +647,47 @@
       .steps-grid {
         grid-template-columns: 1fr;
       }
+
+      /* Accordion behavior for the Missão/Visão/Valores cards on mobile */
+      .features-grid {
+        display: block;
+      }
+
+      .feature-card {
+        margin-bottom: 18px;
+        padding: 18px 16px;
+      }
+
+      .feature-card h3 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      /* caret icon for accordion */
+      .feature-card h3::after {
+        content: '\25BE';
+        display: inline-block;
+        margin-left: 12px;
+        transition: transform 0.35s ease;
+        font-size: 0.9rem;
+        color: var(--primary);
+      }
+
+      .feature-card.open h3::after {
+        transform: rotate(180deg);
+      }
+
+      .feature-card .card-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+
+      .feature-card.open .card-content {
+        max-height: 800px; /* suficiente para conteúdo */
+      }
     }
   </style>
 </head>
@@ -646,6 +708,7 @@
             <li><a href="#home">Início</a></li>
             <li><a href="#servicos">Benefícios</a></li>
             <li><a href="#sobre">A Solução</a></li>
+          <li><a href="#missao-visao-valores">Missão • Visão • Valores</a></li>
             <li><a href="#como-funciona">Como Funciona</a></li>
             <li><a href="#objetivos">Objetivos</a></li>
             <li><a href="#equipe">Equipe</a></li>
@@ -663,6 +726,55 @@
       <div class="cta-buttons">
         <a href="#sobre" class="btn btn-primary">Conheça a Solução</a>
         <a href="#contato" class="btn btn-outline">Solicite um Orçamento</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Missão, Visão e Valores -->
+  <section class="features" id="missao-visao-valores">
+    <h2 class="section-title reveal">Missão, Visão e Valores</h2>
+    <!-- Toggle Comercial / Técnico -->
+    <div style="text-align: center; margin-bottom: 20px;">
+  <label style="font-weight:600; margin-right:10px;">Versão:</label>
+  <button class="btn toggle-btn" id="toggleCommercial" style="margin-right:8px;">Comercial</button>
+  <button class="btn toggle-btn" id="toggleTechnical">Técnico</button>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal accord" data-key="missao">
+        <div class="feature-icon">🎯</div>
+        <h3>Missão</h3>
+        <div class="card-content">
+          <p class="commercial">Nossa missão é proteger ativos elétricos e pessoas por meio de soluções de monitoramento acessíveis, confiáveis e fáceis de usar, reduzindo riscos e aumentando a disponibilidade operacional.</p>
+          <p class="technical" style="display:none;">Fornecer detecção contínua de falhas de exaustores e variações térmicas, com aquisição de sinais via sensores Hall e DS18B20, processamento local e transmissão segura para plataforma web, permitindo ações automáticas (relé) e notificações em tempo real.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal accord" data-key="visao" style="transition-delay: 0.1s;">
+        <div class="feature-icon">🔭</div>
+        <h3>Visão</h3>
+        <div class="card-content">
+          <p class="commercial">Ser referência nacional em tecnologia de monitoramento para painéis elétricos, oferecendo plataformas inteligentes que antecipam falhas e promovem a manutenção preditiva em indústrias e serviços.</p>
+          <p class="technical" style="display:none;">Tornar-se líder em soluções IoT embarcadas para proteção de painéis, entregando algoritmos de classificação de anomalias, integração via APIs padronizadas e suporte a múltiplos protocolos de telemetria.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal accord" data-key="valores" style="transition-delay: 0.2s; text-align: left;">
+        <div class="feature-icon">🤝</div>
+        <h3>Valores</h3>
+        <div class="card-content">
+          <ul class="commercial" style="list-style: disc; margin-left: 1rem; color: var(--gray); line-height: 1.8;">
+            <li>Segurança em primeiro lugar</li>
+            <li>Transparência e ética</li>
+            <li>Inovação contínua</li>
+            <li>Foco no cliente</li>
+            <li>Responsabilidade ambiental</li>
+          </ul>
+          <ul class="technical" style="display:none; list-style: disc; margin-left: 1rem; color: var(--gray); line-height: 1.8;">
+            <li>Robustez e confiabilidade de engenharia</li>
+            <li>Modelos de dados auditáveis</li>
+            <li>Atualizações OTA seguras</li>
+            <li>Compatibilidade com padrões industriais</li>
+            <li>Eficiência energética</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -823,6 +935,28 @@
     </div>
   </section>
 
+  <!-- Seção de Cases de Sucesso -->
+  <section class="features" id="cases">
+    <h2 class="section-title reveal">Cases de Sucesso</h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🏭</div>
+        <h3>Indústria Metalúrgica Alfa</h3>
+        <p>Redução de 80% nos incidentes de sobreaquecimento após a implementação do ExAu, com monitoramento remoto e alertas automáticos para a equipe de manutenção.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay: 0.1s;">
+        <div class="feature-icon">🏢</div>
+        <h3>Centro de Distribuição Beta</h3>
+        <p>Eliminação de paradas não programadas em painéis críticos, garantindo maior disponibilidade operacional e segurança para os colaboradores.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay: 0.2s;">
+        <div class="feature-icon">🏬</div>
+        <h3>Shopping Gama</h3>
+        <p>Monitoramento em tempo real de dezenas de painéis elétricos, com relatórios automáticos e histórico de eventos para auditoria e manutenção preditiva.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="contact-section" id="contato">
     <div class="container">
       <h2 class="section-title reveal">Solicite um Orçamento</h2>
@@ -846,6 +980,49 @@
           </div>
           <button type="submit" class="btn btn-submit">Enviar Solicitação</button>
         </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Detalhes Técnicos -->
+  <section class="about-section" id="detalhes-tecnicos">
+    <div class="about-content container">
+      <div class="about-text reveal">
+        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Detalhes Técnicos do Sistema</h2>
+        <ul style="color: var(--gray); font-size: 1.1rem; line-height: 2;">
+          <li><strong>Microcontrolador:</strong> ESP32 com conectividade Wi-Fi integrada.</li>
+          <li><strong>Sensores:</strong> Sensor de rotação (hall effect), sensor de temperatura digital (DS18B20).</li>
+          <li><strong>Atuadores:</strong> Relé de estado sólido para desligamento automático do exaustor.</li>
+          <li><strong>Interface Web:</strong> Painel responsivo para configuração, histórico de eventos e monitoramento em tempo real.</li>
+          <li><strong>Alertas Remotos:</strong> Integração via API com WhatsApp, Telegram e e-mail.</li>
+          <li><strong>Alimentação:</strong> Fonte 12V/24V DC, consumo otimizado para operação contínua.</li>
+          <li><strong>Firmware:</strong> Atualizável remotamente (OTA) para melhorias e correções futuras.</li>
+        </ul>
+      </div>
+      <div class="about-image reveal" style="transition-delay: 0.2s;">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop" alt="Detalhes técnicos do sistema ExAu">
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de FAQ -->
+  <section class="features" id="faq">
+    <h2 class="section-title reveal">Perguntas Frequentes (FAQ)</h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">❓</div>
+        <h3>O sistema ExAu pode ser instalado em qualquer painel?</h3>
+        <p>Sim! O ExAu foi projetado para ser compatível com a maioria dos painéis elétricos industriais e comerciais, com instalação simples e rápida.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay: 0.1s;">
+        <div class="feature-icon">🔒</div>
+        <h3>Os dados do monitoramento são seguros?</h3>
+        <p>Sim, toda a comunicação é criptografada e o acesso à interface web é protegido por autenticação.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay: 0.2s;">
+        <div class="feature-icon">⚡</div>
+        <h3>O sistema pode ser expandido?</h3>
+        <p>Sim, a arquitetura do ExAu permite a adição de novos sensores, integração com sistemas SCADA e futuras expansões de hardware.</p>
       </div>
     </div>
   </section>
@@ -909,6 +1086,63 @@
     revealElements.forEach(el => {
       revealObserver.observe(el);
     });
+
+    // Toggle Comercial / Técnico
+    const toggleCommercial = document.getElementById('toggleCommercial');
+    const toggleTechnical = document.getElementById('toggleTechnical');
+    const setVersion = (version) => {
+      document.querySelectorAll('#missao-visao-valores .commercial').forEach(el => el.style.display = version === 'commercial' ? '' : 'none');
+      document.querySelectorAll('#missao-visao-valores .technical').forEach(el => el.style.display = version === 'technical' ? '' : 'none');
+      if (version === 'commercial') {
+        toggleCommercial.classList.add('active');
+        toggleTechnical.classList.remove('active');
+      } else {
+        toggleTechnical.classList.add('active');
+        toggleCommercial.classList.remove('active');
+      }
+    };
+
+    toggleCommercial.addEventListener('click', () => setVersion('commercial'));
+    toggleTechnical.addEventListener('click', () => setVersion('technical'));
+    // default
+    setVersion('commercial');
+
+    // Accordion behaviour on mobile for cards
+    const accordCards = document.querySelectorAll('.feature-card.accord');
+    function setupAccordion() {
+      // accordion active on all sizes now
+      accordCards.forEach(card => {
+        const header = card.querySelector('h3');
+        if (!header.dataset.bound) {
+          header.dataset.bound = 'true';
+          const toggle = () => {
+            card.classList.toggle('open');
+            const expanded = card.classList.contains('open');
+            header.setAttribute('aria-expanded', expanded);
+            // set max-height for smooth transition
+            const content = card.querySelector('.card-content');
+            if (expanded) {
+              content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+              content.style.maxHeight = null;
+            }
+          };
+          header.addEventListener('click', toggle);
+          header.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggle();
+            }
+          });
+          header.setAttribute('tabindex', '0');
+          header.setAttribute('role', 'button');
+          header.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    setupAccordion();
+    window.addEventListener('resize', () => setupAccordion());
   </script>
 </body>
 </html>
