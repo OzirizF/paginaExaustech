@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ExAu - Excelência em Soluções</title>
+  <title>Exaustech - Excelência em Soluções</title>
   <style>
     * {
       margin: 0;
@@ -12,19 +12,20 @@
     }
 
     :root {
-      --primary: #6366f1;
-      --primary-dark: #4f46e5;
-      --secondary: #ec4899;
-      --dark: #1f2937;
-      --light: #f9fafb;
-      --gray: #6b7280;
+      /* Paleta: preto, amarelo e branco */
+      --primary: #000000; /* preto */
+      --primary-dark: #0b0b0b;
+      --secondary: #ffcc00; /* amarelo */
+      --dark: #000000;
+      --light: #ffffff;
+      --gray: #4b5563;
     }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
       color: var(--dark);
-      background-color: var(--light);
+      background-color: #f7f7f7; /* leve cinza para contraste com branco puro */
     }
 
     /* Header & Navigation */
@@ -116,8 +117,8 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      color: white;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+      color: var(--light);
       padding: 100px 20px;
       text-align: center;
       position: relative;
@@ -210,9 +211,9 @@
     }
 
     .btn-primary {
-      background: white;
-      color: var(--primary);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      background: var(--secondary);
+      color: var(--dark);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
     .btn-primary:hover {
@@ -222,13 +223,13 @@
 
     .btn-outline {
       background: transparent;
-      color: white;
-      border: 2px solid white;
+      color: var(--dark);
+      border: 2px solid var(--dark);
     }
 
     .btn-outline:hover {
-      background: white;
-      color: var(--primary);
+      background: var(--dark);
+      color: var(--secondary);
       transform: translateY(-3px);
     }
 
@@ -254,7 +255,7 @@
     }
 
     .feature-card {
-      background: var(--light);
+      background: #ffffff;
       padding: 40px 30px;
       border-radius: 15px;
       text-align: center;
@@ -264,7 +265,7 @@
 
     .feature-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       border-color: var(--primary);
     }
 
@@ -287,7 +288,7 @@
     /* About Section */
     .about-section {
       padding: 80px 20px;
-      background: white;
+      background: #ffffff;
     }
 
     .about-content {
@@ -360,7 +361,7 @@
     /* How it Works Section */
     .how-works-section {
       padding: 80px 20px;
-      background: white;
+      background: #ffffff;
     }
 
     .steps-grid {
@@ -416,8 +417,8 @@
     /* Stats Section */
     .stats-section {
       padding: 60px 20px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      color: white;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+      color: var(--light);
     }
 
     .stats-grid {
@@ -490,7 +491,7 @@
     /* Contact Section */
     .contact-section {
       padding: 80px 20px;
-      background: white;
+      background: #ffffff;
     }
 
     .contact-form {
@@ -527,7 +528,7 @@
     .form-group textarea:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
     }
 
     .btn-submit {
@@ -555,7 +556,7 @@
     /* Footer */
     footer {
       background: var(--dark);
-      color: white;
+      color: var(--light);
       padding: 40px 20px;
       text-align: center;
     }
@@ -695,7 +696,7 @@
   <header>
     <div class="container">
       <div class="nav-wrapper">
-        <img src="logo.png" alt="ExAu Logo" class="logo">
+  <img src="logo.png" alt="Exaustech Logo" class="logo">
         
         <div class="menu-toggle" onclick="toggleMenu()">
           <span></span>
@@ -721,7 +722,7 @@
 
   <section class="hero" id="home">
     <div class="hero-content">
-      <h1>Sistema ExAu</h1>
+      <h1>Sistema Exaustech</h1>
       <p>Monitoramento Inteligente de Exaustores para Painéis Elétricos</p>
       <div class="cta-buttons">
         <a href="#sobre" class="btn btn-primary">Conheça a Solução</a>
@@ -805,21 +806,21 @@
     <div class="features-grid">
       <div class="feature-card reveal">
         <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary);"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
         </div>
         <h3>Segurança e Prevenção</h3>
         <p>Previne sobreaquecimento, falhas críticas e riscos de incêndio, garantindo a operação segura dos seus equipamentos.</p>
       </div>
       <div class="feature-card reveal" style="transition-delay: 0.1s;">
         <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><path d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary);"><path d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg>
         </div>
         <h3>Eficiência e Vida Útil</h3>
         <p>Assegura a operação estável dos painéis elétricos e aumenta a vida útil dos componentes com um custo-benefício imbatível.</p>
       </div>
       <div class="feature-card reveal" style="transition-delay: 0.2s;">
         <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary);"><path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"></path></svg>
         </div>
         <h3>Inovação e Controle</h3>
         <p>Monitore, receba alertas e gerencie seus equipamentos remotamente através de uma interface web moderna e notificações em tempo real.</p>
@@ -833,7 +834,7 @@
         <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">A Solução Definitiva</h2>
         <h3>Monitoramento Inteligente para Painéis Elétricos</h3>
         <p><strong>O Problema:</strong> A ventilação é indispensável para garantir a operação segura e confiável de painéis elétricos. Atualmente, quando um exaustor falha ou trava, ele permanece energizado sem aviso ao operador, aumentando significativamente os riscos de superaquecimento, danos a componentes eletrônicos sensíveis e até mesmo incêndios.</p>
-        <p><strong>Nossa Solução:</strong> O Sistema ExAu é um protótipo inovador que monitora continuamente o funcionamento do exaustor através de sensores de rotação e temperatura. O sistema sinaliza falhas tanto localmente (visual e sonoro) quanto remotamente, desliga automaticamente o equipamento em caso de anomalia e oferece uma interface web completa para configuração e gerenciamento.</p>
+  <p><strong>Nossa Solução:</strong> O Sistema Exaustech é um protótipo inovador que monitora continuamente o funcionamento do exaustor através de sensores de rotação e temperatura. O sistema sinaliza falhas tanto localmente (visual e sonoro) quanto remotamente, desliga automaticamente o equipamento em caso de anomalia e oferece uma interface web completa para configuração e gerenciamento.</p>
         <p><strong>Investimento inteligente:</strong> Custo-benefício imbatível comparado aos danos evitados e à segurança garantida.</p>
       </div>
       <div class="about-image reveal" style="transition-delay: 0.2s;">
@@ -942,7 +943,7 @@
       <div class="feature-card reveal">
         <div class="feature-icon">🏭</div>
         <h3>Indústria Metalúrgica Alfa</h3>
-        <p>Redução de 80% nos incidentes de sobreaquecimento após a implementação do ExAu, com monitoramento remoto e alertas automáticos para a equipe de manutenção.</p>
+  <p>Redução de 80% nos incidentes de sobreaquecimento após a implementação do sistema Exaustech, com monitoramento remoto e alertas automáticos para a equipe de manutenção.</p>
       </div>
       <div class="feature-card reveal" style="transition-delay: 0.1s;">
         <div class="feature-icon">🏢</div>
@@ -1000,7 +1001,7 @@
         </ul>
       </div>
       <div class="about-image reveal" style="transition-delay: 0.2s;">
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop" alt="Detalhes técnicos do sistema ExAu">
+  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop" alt="Detalhes técnicos do sistema Exaustech">
       </div>
     </div>
   </section>
@@ -1011,8 +1012,8 @@
     <div class="features-grid">
       <div class="feature-card reveal">
         <div class="feature-icon">❓</div>
-        <h3>O sistema ExAu pode ser instalado em qualquer painel?</h3>
-        <p>Sim! O ExAu foi projetado para ser compatível com a maioria dos painéis elétricos industriais e comerciais, com instalação simples e rápida.</p>
+        <h3>O sistema Exaustech pode ser instalado em qualquer painel?</h3>
+        <p>Sim! O Exaustech foi projetado para ser compatível com a maioria dos painéis elétricos industriais e comerciais, com instalação simples e rápida.</p>
       </div>
       <div class="feature-card reveal" style="transition-delay: 0.1s;">
         <div class="feature-icon">🔒</div>
@@ -1022,14 +1023,14 @@
       <div class="feature-card reveal" style="transition-delay: 0.2s;">
         <div class="feature-icon">⚡</div>
         <h3>O sistema pode ser expandido?</h3>
-        <p>Sim, a arquitetura do ExAu permite a adição de novos sensores, integração com sistemas SCADA e futuras expansões de hardware.</p>
+        <p>Sim, a arquitetura do Exaustech permite a adição de novos sensores, integração com sistemas SCADA e futuras expansões de hardware.</p>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p>&copy; 2024 ExAu - Sistema de Monitoramento Inteligente. Todos os direitos reservados.</p>
+      <p>&copy; 2024 Exaustech - Sistema de Monitoramento Inteligente. Todos os direitos reservados.</p>
       <div class="social-links">
         <a href="#" aria-label="LinkedIn" title="LinkedIn">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
