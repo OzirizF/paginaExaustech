@@ -469,6 +469,28 @@
       opacity: 0.9;
     }
 
+    .stat-item .unit {
+      font-size: 1.1rem;
+      margin-left: 6px;
+      opacity: 0.9;
+      vertical-align: top;
+      font-weight: 600;
+    }
+
+    .stat-desc {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255,255,255,0.9);
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    .stat-text {
+      font-size: 2.4rem;
+      margin-bottom: 6px;
+      font-weight: 800;
+    }
+
     /* Team Section */
     .team-section {
       padding: 80px 20px;
@@ -649,6 +671,64 @@
     .stat-item h3[data-count] {
       transition: all 0.6s ease;
       will-change: opacity, transform;
+    }
+
+    /* Installation section styles */
+    .installation-section .topologies-grid {
+      margin-top: 20px;
+    }
+
+    .topology-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(11,11,11,0.06);
+      text-align: left;
+    }
+
+    .topology-card h3 { margin-bottom: 8px; }
+    .topology-card p { color: var(--gray); }
+
+    .topo-svg { width: 100%; height: 220px; display:block; }
+
+    /* animated dashed line - draw effect */
+    .topo-svg .link, .topo-svg .link2 {
+      stroke-dasharray: 12 6;
+      animation: dash 3s linear infinite;
+    }
+
+    @keyframes dash {
+      to { stroke-dashoffset: -36; }
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .topologies-grid { grid-template-columns: 1fr !important; }
+      .topo-svg { height: 180px; }
+    }
+
+    /* Tooltip and packet bubble */
+    .svg-tooltip {
+      position: fixed;
+      background: rgba(11,11,11,0.95);
+      color: white;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      pointer-events: none;
+      z-index: 3000;
+      transform: translate(-50%, -140%);
+      opacity: 0;
+      transition: opacity 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .packet-bubble {
+      fill: #fff;
+      stroke: none;
+      r: 6;
+      opacity: 0.95;
+      filter: drop-shadow(0 6px 10px rgba(11,11,11,0.12));
     }
 
     /* Animation on Scroll */
@@ -893,20 +973,24 @@
   <section class="stats-section">
     <div class="stats-grid">
       <div class="stat-item reveal">
-        <h3 data-count="100">0</h3>
-        <p>Prevenção de Falhas</p>
+        <h3><span class="count" data-count="100">0</span><span class="unit">%</span></h3>
+        <p>Cobertura de Monitoramento</p>
+        <small class="stat-desc">Percentual estimado de pontos monitorados pelo sistema</small>
       </div>
       <div class="stat-item reveal" style="transition-delay: 0.1s;">
-        <h3 data-count="24">0</h3>
+        <h3><span class="count" data-count="24">0</span><span class="unit">/7</span></h3>
         <p>Monitoramento Contínuo</p>
+        <small class="stat-desc">Serviço ativo 24 horas por dia, 7 dias por semana</small>
       </div>
       <div class="stat-item reveal" style="transition-delay: 0.2s;">
-        <h3 data-count="1">0</h3>
-        <p>IoT</p>
+        <h3 class="stat-text">MQTT</h3>
+        <p>Protocolo IoT</p>
+        <small class="stat-desc">Suporta MQTT, HTTP e integrações para envio de telemetria</small>
       </div>
       <div class="stat-item reveal" style="transition-delay: 0.3s;">
-        <h3 data-count="1">0</h3>
-        <p>Web</p>
+        <h3 class="stat-text">Web</h3>
+        <p>Dashboard Responsivo</p>
+        <small class="stat-desc">Acesso via navegador para monitoramento e relatórios</small>
       </div>
     </div>
   </section>
@@ -1138,6 +1222,109 @@
     </div>
   </section>
 
+  <!-- Seção Instalação / Topologias -->
+  <section class="installation-section about-section" id="instalacao">
+    <div class="container">
+      <h2 class="section-title reveal">Modos de Instalação</h2>
+      <p class="reveal" style="text-align:center; max-width:900px; margin: 0 auto 20px; color: var(--gray);">A solução Exaustech pode ser implantada em duas topologias principais: múltiplos painéis conectados a um servidor central (recomendado para plantas maiores) ou com um único painel assumindo a função de servidor local (ideal para instalações pequenas).</p>
+
+      <div class="topologies-grid reveal" style="display:grid; grid-template-columns: 1fr 1fr; gap:30px; align-items:start;">
+        <!-- Topologia A: Vários painéis + Servidor Central -->
+        <div class="topology-card">
+          <h3>Topologia A — Servidor Central</h3>
+          <svg class="topo-svg" id="topoA" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1"><stop offset="0%" stop-color="#0f64ff" stop-opacity="1"/><stop offset="100%" stop-color="#ffd400" stop-opacity="1"/></linearGradient>
+            </defs>
+            <!-- servidor central -->
+            <rect x="240" y="20" width="120" height="64" rx="8" fill="url(#g1)" opacity="0.95"></rect>
+            <text x="300" y="60" text-anchor="middle" fill="#fff" font-weight="700">Servidor</text>
+
+            <!-- cliente / dashboard -->
+            <rect x="240" y="110" width="120" height="58" rx="8" fill="#fff" stroke-opacity="0.06"></rect>
+            <text x="300" y="146" text-anchor="middle" fill="#0b0b0b" font-size="13">Cliente (Dashboard)</text>
+
+            <!-- painéis -->
+            <g class="panels" fill="#fff" stroke="#0b0b0b">
+              <rect x="40" y="220" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
+              <text x="90" y="255" text-anchor="middle" fill="#0b0b0b" font-size="12">Painel 1</text>
+              <rect x="190" y="220" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
+              <text x="240" y="255" text-anchor="middle" fill="#0b0b0b" font-size="12">Painel 2</text>
+              <rect x="340" y="220" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
+              <text x="390" y="255" text-anchor="middle" fill="#0b0b0b" font-size="12">Painel 3</text>
+              <rect x="490" y="220" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
+              <text x="540" y="255" text-anchor="middle" fill="#0b0b0b" font-size="12">Painel 4</text>
+            </g>
+
+            <!-- conexões animadas: painéis -> servidor -->
+            <g stroke="url(#g1)" stroke-width="3" fill="none" stroke-linecap="round">
+              <path id="A1" d="M90 220 L300 84" class="link" stroke-dasharray="6 6" data-latency="12ms" data-port="1883"></path>
+              <path id="A2" d="M240 220 L300 84" class="link" stroke-dasharray="6 6" data-latency="9ms" data-port="1883"></path>
+              <path id="A3" d="M390 220 L300 84" class="link" stroke-dasharray="6 6" data-latency="14ms" data-port="1883"></path>
+              <path id="A4" d="M540 220 L300 84" class="link" stroke-dasharray="6 6" data-latency="20ms" data-port="1883"></path>
+            </g>
+
+            <!-- servidor -> cliente (dash) -->
+            <g stroke="rgba(255,255,255,0.85)" stroke-width="3" fill="none" stroke-linecap="round">
+              <path id="A_srv_c" d="M300 84 L300 110" stroke-dasharray="6 4"></path>
+            </g>
+          </svg>
+          <p style="color:var(--gray);">Vários painéis reportam dados para um servidor central que processa e armazena informações, disponibilizando dashboards e notificações.</p>
+        </div>
+
+        <!-- Topologia B: Um painel funciona como servidor -->
+        <div class="topology-card">
+          <h3>Topologia B — Painel Único como Servidor</h3>
+          <svg class="topo-svg" id="topoB" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g2" x1="0" x2="1"><stop offset="0%" stop-color="#0f64ff" stop-opacity="1"/><stop offset="100%" stop-color="#ffd400" stop-opacity="1"/></linearGradient>
+            </defs>
+            <!-- painel servidor -->
+            <rect x="240" y="120" width="120" height="90" rx="8" fill="url(#g2)" opacity="0.95"></rect>
+            <text x="300" y="170" text-anchor="middle" fill="#fff" font-weight="700">Painel (Servidor)</text>
+
+            <!-- cliente / dashboard -->
+            <rect x="30" y="200" width="120" height="58" rx="8" fill="#fff" stroke-opacity="0.06"></rect>
+            <text x="90" y="236" text-anchor="middle" fill="#0b0b0b" font-size="13">Cliente</text>
+
+            <!-- dispositivos locais -->
+            <g class="local-devices" fill="#fff" stroke="#0b0b0b">
+              <rect x="120" y="40" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
+              <text x="170" y="75" text-anchor="middle" fill="#0b0b0b" font-size="12">Sensor A</text>
+              <rect x="380" y="40" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
+              <text x="430" y="75" text-anchor="middle" fill="#0b0b0b" font-size="12">Sensor B</text>
+            </g>
+
+            <!-- conexões curtas (sensores -> painel) -->
+            <g stroke="url(#g2)" stroke-width="3" fill="none" stroke-linecap="round">
+              <path id="B1" d="M170 104 L300 140" class="link2" stroke-dasharray="6 6" data-latency="6ms" data-port="1883"></path>
+              <path id="B2" d="M430 104 L300 140" class="link2" stroke-dasharray="6 6" data-latency="7ms" data-port="1883"></path>
+            </g>
+
+            <!-- painel -> cliente (dash) -->
+            <g stroke="url(#g2)" stroke-width="3" fill="none" stroke-linecap="round">
+              <path id="B_srv_c" d="M240 170 L150 236" stroke-dasharray="6 4"></path>
+            </g>
+          </svg>
+          <p style="color:var(--gray);">Um painel realiza coleta e também oferece serviços de servidor, útil quando a rede é pequena ou não há infraestrutura dedicada.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px; color:var(--gray);">
+        <h4 style="margin-bottom:8px;">Instruções rápidas de instalação</h4>
+        <ul style="line-height:1.8; max-width:900px; margin:0 auto 40px; color:var(--gray);">
+          <li><strong>Servidor central:</strong> máquina com Node/NGINX opcional, IP fixo ou DNS, porta 443 configurada; configure painéis para apontar para o endereço do servidor.</li>
+          <li><strong>Painel como servidor:</strong> configure o painel para modo AP ou roteado, ative serviço local e verifique NAT/firewall; útil para pequenos sites sem servidor dedicado.</li>
+          <li><strong>Segurança:</strong> use TLS, autenticação por token e firewall. Para redes industriais, segmentação VLAN e regras de acesso restrito.</li>
+        </ul>
+      </div>
+      <div style="text-align:center; margin-top:6px;">
+        <button id="simStart" class="btn btn-primary" style="margin-right:8px;">Iniciar Simulação</button>
+        <button id="simStop" class="btn btn-outline">Parar Simulação</button>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="container">
       <p>&copy; 2024 Exaustech - Sistema de Monitoramento Inteligente. Todos os direitos reservados.</p>
@@ -1165,6 +1352,8 @@
   </div>
 
   <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+  <div id="svgTooltip" class="svg-tooltip" role="status" aria-hidden="true"></div>
 
   <script>
     function toggleMenu() {
@@ -1280,8 +1469,9 @@
 
     /* Counters (animated) */
     function animateCounters() {
-      document.querySelectorAll('.stat-item h3[data-count]').forEach(el => {
+      document.querySelectorAll('.count').forEach(el => {
         const target = +el.getAttribute('data-count');
+        if (!target) return;
         const duration = 1500;
         let start = null;
         const step = (timestamp) => {
@@ -1325,6 +1515,102 @@
     });
 
     /* small parallax transform applied via CSS variable (used in a follow-up) */
+
+    // ------- SVG interactivity & simulator -------
+    const tooltip = document.getElementById('svgTooltip');
+
+    function showTooltip(text, x, y) {
+      tooltip.textContent = text;
+      tooltip.style.left = x + 'px';
+      tooltip.style.top = y + 'px';
+      tooltip.style.opacity = '1';
+      tooltip.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideTooltip() {
+      tooltip.style.opacity = '0';
+      tooltip.setAttribute('aria-hidden', 'true');
+    }
+
+    // highlight on hover and show tooltip using data attributes
+    document.querySelectorAll('.topo-svg .link, .topo-svg .link2, .topo-svg path[id$="_srv_c"]').forEach(path => {
+      path.addEventListener('mouseenter', (e) => {
+        path.style.strokeWidth = 5;
+        path.style.opacity = 0.95;
+        const rect = path.getBoundingClientRect();
+        const latency = path.getAttribute('data-latency') || '';
+        const port = path.getAttribute('data-port') || '';
+        const isSrv = /_srv_c$/.test(path.id);
+        if (isSrv) {
+          showTooltip(`fluxo: servidor → cliente`, rect.left + rect.width/2, rect.top + 8);
+        } else {
+          showTooltip(`latência: ${latency} ${port ? '• porta: ' + port : ''}`, rect.left + rect.width/2, rect.top + 8);
+        }
+      });
+      path.addEventListener('mousemove', (e) => {
+        showTooltip(tooltip.textContent, e.clientX, e.clientY - 12);
+      });
+      path.addEventListener('mouseleave', (e) => {
+        path.style.strokeWidth = '';
+        path.style.opacity = '';
+        hideTooltip();
+      });
+    });
+
+    // simulator: animate bubbles along SVG paths
+    let simInterval = null;
+    const activeBubbles = new Set();
+
+    function spawnBubbleOnPath(pathEl, duration = 3000) {
+      // create bubble as SVG circle and animate along path
+      const svg = pathEl.ownerSVGElement;
+      const pt = svg.createSVGPoint();
+      const bubble = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      bubble.setAttribute('r','6');
+      bubble.setAttribute('fill','#fff');
+      bubble.setAttribute('opacity','0.95');
+      svg.appendChild(bubble);
+
+      const pathLength = pathEl.getTotalLength();
+      const start = performance.now();
+      const id = Symbol();
+      activeBubbles.add(id);
+
+      function step(ts) {
+        const t = (ts - start) / duration;
+        if (t > 1 || !activeBubbles.has(id)) {
+          bubble.remove();
+          activeBubbles.delete(id);
+          return;
+        }
+        const point = pathEl.getPointAtLength(t * pathLength);
+        bubble.setAttribute('cx', point.x);
+        bubble.setAttribute('cy', point.y);
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function startSimulation() {
+      if (simInterval) return;
+      const allPaths = Array.from(document.querySelectorAll('#topoA .link, #topoA path[id$="_srv_c"], #topoA .link2, #topoB .link2, #topoB path[id$="_srv_c"]'));
+      simInterval = setInterval(() => {
+        // pick random path and spawn bubble
+        const p = allPaths[Math.floor(Math.random() * allPaths.length)];
+        if (p) spawnBubbleOnPath(p, 2200 + Math.random() * 1800);
+      }, 500);
+    }
+
+    function stopSimulation() {
+      clearInterval(simInterval);
+      simInterval = null;
+      // remove all bubbles
+      document.querySelectorAll('.topo-svg circle').forEach(c => c.remove());
+      activeBubbles.clear();
+    }
+
+    document.getElementById('simStart').addEventListener('click', () => startSimulation());
+    document.getElementById('simStop').addEventListener('click', () => stopSimulation());
   </script>
 </body>
 </html>
