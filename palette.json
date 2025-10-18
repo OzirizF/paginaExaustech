@@ -1,9 +1,33 @@
 {
-  "colors": [
-    "#040404",
-    "#e3a962",
-    "#5e4738",
-    "#7c8888",
-    "#747c84"
-  ]
+  "brand": "Exaustech",
+  "version": "2.0",
+  "updated": "2025-10-18",
+  "colors": {
+    "primary": {
+      "black": "#000000",
+      "orange_dark": "#E55300",
+      "orange": "#FF6A00",
+      "orange_light": "#FFB300",
+      "yellow": "#FFD43B"
+    },
+    "brand": {
+      "exaus_orange": "#E74C1B",
+      "tech_gray": "#E5E5E5",
+      "white": "#FFFFFF"
+    },
+    "gradient": {
+      "primary": "linear-gradient(135deg, #E55300 0%, #FF6A00 35%, #FFB300 70%, #FFD43B 100%)",
+      "hover": "linear-gradient(135deg, #FFD43B 0%, #FFB300 30%, #FF6A00 65%, #E55300 100%)"
+    }
+  },
+  "rgb": {
+    "black": "rgb(0, 0, 0)",
+    "orange_dark": "rgb(229, 83, 0)",
+    "orange": "rgb(255, 106, 0)",
+    "orange_light": "rgb(255, 179, 0)",
+    "yellow": "rgb(255, 212, 59)",
+    "exaus_orange": "rgb(231, 76, 27)",
+    "tech_gray": "rgb(229, 229, 229)",
+    "white": "rgb(255, 255, 255)"
+  }
 }
