@@ -852,6 +852,57 @@
       transform: translateY(0);
     }
 
+    /* New Installation (tabs + compare) */
+    .install-compare {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 20px auto 8px;
+      max-width: 1000px;
+    }
+    .compare-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 8px 24px var(--shadow-color);
+    }
+    .compare-card h3 { margin-bottom: 8px; color: var(--text-primary); }
+    .compare-card small { color: var(--text-secondary); display:block; margin-bottom: 10px; }
+    .compare-card ul { margin-left: 1.2rem; color: var(--text-secondary); line-height: 1.7; }
+
+    .install-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 24px 0 12px;
+      flex-wrap: wrap;
+    }
+    .install-tab {
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      padding: 10px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .install-tab.active { background: var(--gradient-primary); color: var(--white); border-color: var(--primary-orange); }
+
+    .install-panel { display: none; }
+    .install-panel.active { display: block; }
+    .install-panel .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 24px var(--shadow-color);
+    }
+    .install-panel h3 { color: var(--text-primary); margin-bottom: 10px; font-size: 1.2rem; }
+    .install-panel ul { color: var(--text-secondary); margin-left: 1.2rem; line-height: 1.8; }
+    .install-note { color: var(--text-secondary); text-align:center; margin-top: 10px; }
+
     /* Footer */
     footer {
       background: linear-gradient(90deg, var(--primary-black), var(--primary-orange-dark));
@@ -902,7 +953,7 @@
         top: 100%;
         left: 0;
         right: 0;
-        background: white;
+        background: var(--bg-primary);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         max-height: 0;
         overflow: hidden;
@@ -996,7 +1047,7 @@
   <header>
     <div class="container">
       <div class="nav-wrapper">
-  <img src="Logo.jpg" alt="Exaustech Logo" class="logo" width="160" height="50" style="object-fit:contain;">
+  <img src="Logo.svg" alt="Exaustech Logo" class="logo" width="160" height="50" style="object-fit:contain;">
         
         <div class="menu-toggle" onclick="toggleMenu()">
           <span></span>
@@ -1007,12 +1058,16 @@
         <nav id="mainNav">
           <ul>
             <li><a href="#home">Início</a></li>
-            <li><a href="#servicos">Benefícios</a></li>
             <li><a href="#sobre">A Solução</a></li>
-          <li><a href="#missao-visao-valores">Missão • Visão • Valores</a></li>
             <li><a href="#como-funciona">Como Funciona</a></li>
+            <li><a href="#servicos">Benefícios</a></li>
+            <li><a href="#instalacao">Instalação</a></li>
             <li><a href="#objetivos">Objetivos</a></li>
+            <li><a href="#missao-visao-valores">Missão • Visão • Valores</a></li>
+            <li><a href="#cases">Cases</a></li>
             <li><a href="#equipe">Equipe</a></li>
+            <li><a href="#detalhes-tecnicos">Detalhes Técnicos</a></li>
+            <li><a href="#faq">FAQ</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>
@@ -1029,6 +1084,7 @@
     </div>
   </header>
 
+  <!-- NOVA ORDEM DE SEÇÕES PARA MELHOR COMPREENSÃO -->
   <section class="hero" id="home">
     <div class="hero-content">
       <h1>Sistema Exaustech</h1>
@@ -1040,14 +1096,259 @@
     </div>
   </section>
 
-  <!-- Seção Missão, Visão e Valores -->
+  <!-- 1) A SOLUÇÃO -->
+  <section class="about-section" id="sobre">
+    <div class="about-content container">
+      <div class="about-text reveal">
+        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">A Solução Definitiva</h2>
+        <h3>Monitoramento Inteligente para Painéis Elétricos</h3>
+        <p><strong>O Problema:</strong> A ventilação é indispensável para garantir a operação segura e confiável de painéis elétricos. Atualmente, quando um exaustor falha ou trava, ele permanece energizado sem aviso ao operador, aumentando significativamente os riscos de superaquecimento, danos a componentes eletrônicos sensíveis e até mesmo incêndios.</p>
+        <p><strong>Nossa Solução:</strong> O Sistema Exaustech é um protótipo inovador que monitora continuamente o funcionamento do exaustor através de sensores de rotação e temperatura. O sistema sinaliza falhas tanto localmente (visual e sonoro) quanto remotamente, desliga automaticamente o equipamento em caso de anomalia e oferece uma interface web completa para configuração e gerenciamento.</p>
+        <p><strong>Investimento inteligente:</strong> Custo-benefício imbatível comparado aos danos evitados e à segurança garantida.</p>
+      </div>
+      <div class="about-image reveal" style="transition-delay: 0.2s;">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920&auto=format&fit=crop" alt="Painel elétrico com sistema de monitoramento">
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) COMO FUNCIONA -->
+  <section class="how-works-section" id="como-funciona">
+    <div class="container">
+      <h2 class="section-title reveal">Como Funciona</h2>
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-number">1</div>
+          <h3>Detecção</h3>
+          <p>Sensores monitoram continuamente a rotação do exaustor e a temperatura do painel elétrico.</p>
+        </div>
+        <div class="step-card reveal" style="transition-delay: 0.1s;">
+          <div class="step-number">2</div>
+          <h3>Análise</h3>
+          <p>O sistema processa os dados em tempo real e identifica qualquer anomalia no funcionamento.</p>
+        </div>
+        <div class="step-card reveal" style="transition-delay: 0.2s;">
+          <div class="step-number">3</div>
+          <h3>Alerta</h3>
+          <p>Sinalização visual e sonora local + notificações remotas via WhatsApp, Telegram ou e-mail.</p>
+        </div>
+        <div class="step-card reveal" style="transition-delay: 0.3s;">
+          <div class="step-number">4</div>
+          <h3>Proteção</h3>
+          <p>Desligamento automático do exaustor em caso de falha crítica, prevenindo danos maiores.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) BENEFÍCIOS -->
+  <section class="features" id="servicos">
+    <h2 class="section-title reveal">Por que nosso sistema é essencial?</h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary);"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+        </div>
+        <h3>Segurança e Prevenção</h3>
+        <p>Previne sobreaquecimento, falhas críticas e riscos de incêndio, garantindo a operação segura dos seus equipamentos.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay: 0.1s;">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary);"><path d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg>
+        </div>
+        <h3>Eficiência e Vida Útil</h3>
+        <p>Assegura a operação estável dos painéis elétricos e aumenta a vida útil dos componentes com um custo-benefício imbatível.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay: 0.2s;">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary);"><path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"></path></svg>
+        </div>
+        <h3>Inovação e Controle</h3>
+        <p>Monitore, receba alertas e gerencie seus equipamentos remotamente através de uma interface web moderna e notificações em tempo real.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) INDICADORES -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <h3><span class="count" data-count="100">0</span><span class="unit">%</span></h3>
+        <p>Cobertura de Monitoramento</p>
+        <small class="stat-desc">Percentual estimado de pontos monitorados pelo sistema</small>
+      </div>
+      <div class="stat-item reveal" style="transition-delay: 0.1s;">
+        <h3><span class="count" data-count="24">0</span><span class="unit">/7</span></h3>
+        <p>Monitoramento Contínuo</p>
+        <small class="stat-desc">Serviço ativo 24 horas por dia, 7 dias por semana</small>
+      </div>
+      <div class="stat-item reveal" style="transition-delay: 0.2s;">
+        <h3 class="stat-text">MQTT</h3>
+        <p>Protocolo IoT</p>
+        <small class="stat-desc">Suporta MQTT, HTTP e integrações para envio de telemetria</small>
+      </div>
+      <div class="stat-item reveal" style="transition-delay: 0.3s;">
+        <h3 class="stat-text">Web</h3>
+        <p>Dashboard Responsivo</p>
+        <small class="stat-desc">Acesso via navegador para monitoramento e relatórios</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) INSTALAÇÃO / TOPOLOGIAS -->
+  <section class="installation-section about-section" id="instalacao">
+    <div class="container">
+      <h2 class="section-title reveal">Modos de Instalação</h2>
+      <p class="reveal" style="text-align:center; max-width:900px; margin: 0 auto 20px; color: var(--gray);">
+        Escolha o modo de implantação que melhor se adapta ao seu cenário. Abaixo você vê uma comparação rápida e, em seguida, um guia passo a passo para cada opção.
+      </p>
+
+      <!-- Comparação rápida -->
+      <div class="install-compare reveal">
+        <div class="compare-card">
+          <h3>Servidor Central</h3>
+          <small>Recomendado para múltiplos painéis e plantas médias/grandes</small>
+          <ul>
+            <li><strong>Prós:</strong> Escalável, centraliza dados, facilita relatórios e integrações.</li>
+            <li><strong>Contras:</strong> Requer infraestrutura (servidor/VM), configuração de rede e SSL.</li>
+            <li><strong>Quando usar:</strong> Vários painéis distribuídos ou necessidade de histórico central.</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h3>Painel como Servidor</h3>
+          <small>Ideal para instalações pequenas ou piloto</small>
+          <ul>
+            <li><strong>Prós:</strong> Simples, menor custo, implantação rápida.</li>
+            <li><strong>Contras:</strong> Menos escalável, recursos locais limitados.</li>
+            <li><strong>Quando usar:</strong> Um ou poucos painéis sem infraestrutura dedicada.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Abas -->
+      <div class="install-tabs">
+        <button class="install-tab active" data-target="#tab-central">Servidor Central</button>
+        <button class="install-tab" data-target="#tab-painel">Painel Servidor</button>
+      </div>
+
+      <!-- Painel: Servidor Central -->
+      <div id="tab-central" class="install-panel active reveal">
+        <div class="card">
+          <h3>Requisitos</h3>
+          <ul>
+            <li>Servidor/VM com Linux (ou Windows) e acesso à internet/local.</li>
+            <li>Docker/Node e (opcional) NGINX/Traefik para proxy reverso.</li>
+            <li>DNS ou IP fixo; certificado TLS para HTTPS (recomendado).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Passo a passo</h3>
+          <ul>
+            <li>1. Provisionar servidor e configurar DNS/IP.</li>
+            <li>2. Subir serviços (broker MQTT/HTTP e WebApp/dashboard).</li>
+            <li>3. Habilitar TLS (porta 443) e regras de firewall.</li>
+            <li>4. Em cada painel, configurar o endpoint do servidor (host/porta).</li>
+            <li>5. Validar telemetria e alertas na interface web.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Rede e Portas</h3>
+          <ul>
+            <li>HTTPS: 443 (web/dashboard), HTTP: 80 (opcional, redirecionar).</li>
+            <li>MQTT: 1883 (sem TLS) ou 8883 (com TLS), conforme configuração.</li>
+            <li>Permitir saída dos painéis para o servidor e restringir o restante.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Segurança</h3>
+          <ul>
+            <li>TLS obrigatório em produção; autenticação por token/usuário.</li>
+            <li>Segmentação de rede (VLAN) e regras de firewall mínimas.</li>
+            <li>Backups do banco de dados e rotação de logs.</li>
+          </ul>
+        </div>
+        <p class="install-note">Dica: para alta disponibilidade, considere instâncias redundantes e monitoramento externo.</p>
+      </div>
+
+      <!-- Painel: Painel como Servidor -->
+      <div id="tab-painel" class="install-panel reveal">
+        <div class="card">
+          <h3>Requisitos</h3>
+          <ul>
+            <li>Painel com módulo que hospeda o serviço local (AP/STA).</li>
+            <li>Rede local estável; cliente acessando via Wi‑Fi/Ethernet.</li>
+            <li>OPCIONAL: acesso externo via NAT/port‑forwarding (com cautela).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Passo a passo</h3>
+          <ul>
+            <li>1. Ativar modo servidor no painel (AP ou roteado).</li>
+            <li>2. Definir SSID/senha (AP) ou IP local (STA/roteado).</li>
+            <li>3. Acessar o painel via navegador (ex.: http://ip-do-painel).</li>
+            <li>4. Configurar sensores, limites e contatos para alertas.</li>
+            <li>5. (Opcional) Integrar com serviços remotos quando necessário.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Rede e Portas</h3>
+          <ul>
+            <li>HTTP local (porta configurável). Para acesso externo, usar VPN.</li>
+            <li>Evite expor portas na internet sem TLS e controle de acesso.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Segurança</h3>
+          <ul>
+            <li>Credenciais fortes e atualização de firmware em dia (OTA).</li>
+            <li>Isolar a rede do painel do restante quando possível.</li>
+          </ul>
+        </div>
+        <p class="install-note">Dica: para crescer depois, é fácil migrar para o modo Servidor Central mantendo a configuração.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6) OBJETIVOS TÉCNICOS -->
+  <section class="objectives-section" id="objetivos">
+    <div class="container">
+      <h2 class="section-title reveal">Nossos Objetivos Técnicos</h2>
+      <div class="objectives-list">
+        <div class="objective-item reveal">
+          <div class="objective-icon">✓</div>
+          <p><strong>Detectar falhas precisas:</strong> Utilização de sensores de rotação/parada e temperatura para identificar imediatamente quando o exaustor para de funcionar ou apresenta comportamento anormal.</p>
+        </div>
+        <div class="objective-item reveal" style="transition-delay: 0.1s;">
+          <div class="objective-icon">✓</div>
+          <p><strong>Sinalização eficiente:</strong> Implementação de alertas visuais (LEDs) e sonoros (buzzer) para notificação local imediata de qualquer falha detectada.</p>
+        </div>
+        <div class="objective-item reveal" style="transition-delay: 0.2s;">
+          <div class="objective-icon">✓</div>
+          <p><strong>Controle eletrônico inteligente:</strong> Capacidade de controlar a alimentação elétrica do exaustor, incluindo desligamento automático programável em caso de detecção de falha crítica.</p>
+        </div>
+        <div class="objective-item reveal" style="transition-delay: 0.3s;">
+          <div class="objective-icon">✓</div>
+          <p><strong>Notificações em tempo real:</strong> Sistema de alertas remotos via Wi-Fi integrado com WhatsApp, Telegram e e-mail para notificação instantânea da equipe de manutenção.</p>
+        </div>
+        <div class="objective-item reveal" style="transition-delay: 0.4s;">
+          <div class="objective-icon">✓</div>
+          <p><strong>Interface web centralizada:</strong> Página de configuração acessível remotamente permitindo ajuste de limites de temperatura, calibração de sensores, histórico de eventos e gerenciamento completo do sistema.</p>
+        </div>
+        <div class="objective-item reveal" style="transition-delay: 0.5s;">
+          <div class="objective-icon">✓</div>
+          <p><strong>Evolução contínua:</strong> Arquitetura preparada para migração futura para hardware dedicado, reduzindo custos de produção e aumentando a robustez do sistema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7) MISSÃO • VISÃO • VALORES -->
   <section class="features" id="missao-visao-valores">
     <h2 class="section-title reveal">Missão, Visão e Valores</h2>
-    <!-- Toggle Comercial / Técnico -->
     <div style="text-align: center; margin-bottom: 20px;">
-  <label style="font-weight:600; margin-right:10px;">Versão:</label>
-  <button class="btn toggle-btn" id="toggleCommercial" style="margin-right:8px;">Comercial</button>
-  <button class="btn toggle-btn" id="toggleTechnical">Técnico</button>
+      <label style="font-weight:600; margin-right:10px;">Versão:</label>
+      <button class="btn toggle-btn" id="toggleCommercial" style="margin-right:8px;">Comercial</button>
+      <button class="btn toggle-btn" id="toggleTechnical">Técnico</button>
     </div>
     <div class="features-grid">
       <div class="feature-card reveal accord" data-key="missao">
@@ -1089,133 +1390,29 @@
     </div>
   </section>
 
-  <section class="stats-section">
-    <div class="stats-grid">
-      <div class="stat-item reveal">
-        <h3><span class="count" data-count="100">0</span><span class="unit">%</span></h3>
-        <p>Cobertura de Monitoramento</p>
-        <small class="stat-desc">Percentual estimado de pontos monitorados pelo sistema</small>
-      </div>
-      <div class="stat-item reveal" style="transition-delay: 0.1s;">
-        <h3><span class="count" data-count="24">0</span><span class="unit">/7</span></h3>
-        <p>Monitoramento Contínuo</p>
-        <small class="stat-desc">Serviço ativo 24 horas por dia, 7 dias por semana</small>
-      </div>
-      <div class="stat-item reveal" style="transition-delay: 0.2s;">
-        <h3 class="stat-text">MQTT</h3>
-        <p>Protocolo IoT</p>
-        <small class="stat-desc">Suporta MQTT, HTTP e integrações para envio de telemetria</small>
-      </div>
-      <div class="stat-item reveal" style="transition-delay: 0.3s;">
-        <h3 class="stat-text">Web</h3>
-        <p>Dashboard Responsivo</p>
-        <small class="stat-desc">Acesso via navegador para monitoramento e relatórios</small>
-      </div>
-    </div>
-  </section>
-
-  <section class="features" id="servicos">
-    <h2 class="section-title reveal">Por que nosso sistema é essencial?</h2>
+  <!-- 8) CASES -->
+  <section class="features" id="cases">
+    <h2 class="section-title reveal">Cases de Sucesso</h2>
     <div class="features-grid">
       <div class="feature-card reveal">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary);"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-        </div>
-        <h3>Segurança e Prevenção</h3>
-        <p>Previne sobreaquecimento, falhas críticas e riscos de incêndio, garantindo a operação segura dos seus equipamentos.</p>
+        <div class="feature-icon">🏭</div>
+        <h3>Indústria Metalúrgica Alfa</h3>
+        <p>Redução de 80% nos incidentes de sobreaquecimento após a implementação do sistema Exaustech, com monitoramento remoto e alertas automáticos para a equipe de manutenção.</p>
       </div>
       <div class="feature-card reveal" style="transition-delay: 0.1s;">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary);"><path d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg>
-        </div>
-        <h3>Eficiência e Vida Útil</h3>
-        <p>Assegura a operação estável dos painéis elétricos e aumenta a vida útil dos componentes com um custo-benefício imbatível.</p>
+        <div class="feature-icon">🏢</div>
+        <h3>Centro de Distribuição Beta</h3>
+        <p>Eliminação de paradas não programadas em painéis críticos, garantindo maior disponibilidade operacional e segurança para os colaboradores.</p>
       </div>
       <div class="feature-card reveal" style="transition-delay: 0.2s;">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary);"><path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"></path></svg>
-        </div>
-        <h3>Inovação e Controle</h3>
-        <p>Monitore, receba alertas e gerencie seus equipamentos remotamente através de uma interface web moderna e notificações em tempo real.</p>
+        <div class="feature-icon">🏬</div>
+        <h3>Shopping Gama</h3>
+        <p>Monitoramento em tempo real de dezenas de painéis elétricos, com relatórios automáticos e histórico de eventos para auditoria e manutenção preditiva.</p>
       </div>
     </div>
   </section>
 
-  <section class="about-section" id="sobre">
-    <div class="about-content container">
-      <div class="about-text reveal">
-        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">A Solução Definitiva</h2>
-        <h3>Monitoramento Inteligente para Painéis Elétricos</h3>
-        <p><strong>O Problema:</strong> A ventilação é indispensável para garantir a operação segura e confiável de painéis elétricos. Atualmente, quando um exaustor falha ou trava, ele permanece energizado sem aviso ao operador, aumentando significativamente os riscos de superaquecimento, danos a componentes eletrônicos sensíveis e até mesmo incêndios.</p>
-  <p><strong>Nossa Solução:</strong> O Sistema Exaustech é um protótipo inovador que monitora continuamente o funcionamento do exaustor através de sensores de rotação e temperatura. O sistema sinaliza falhas tanto localmente (visual e sonoro) quanto remotamente, desliga automaticamente o equipamento em caso de anomalia e oferece uma interface web completa para configuração e gerenciamento.</p>
-        <p><strong>Investimento inteligente:</strong> Custo-benefício imbatível comparado aos danos evitados e à segurança garantida.</p>
-      </div>
-      <div class="about-image reveal" style="transition-delay: 0.2s;">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920&auto=format&fit=crop" alt="Painel elétrico com sistema de monitoramento">
-      </div>
-    </div>
-  </section>
-
-  <section class="how-works-section" id="como-funciona">
-    <div class="container">
-      <h2 class="section-title reveal">Como Funciona</h2>
-      <div class="steps-grid">
-        <div class="step-card reveal">
-          <div class="step-number">1</div>
-          <h3>Detecção</h3>
-          <p>Sensores monitoram continuamente a rotação do exaustor e a temperatura do painel elétrico.</p>
-        </div>
-        <div class="step-card reveal" style="transition-delay: 0.1s;">
-          <div class="step-number">2</div>
-          <h3>Análise</h3>
-          <p>O sistema processa os dados em tempo real e identifica qualquer anomalia no funcionamento.</p>
-        </div>
-        <div class="step-card reveal" style="transition-delay: 0.2s;">
-          <div class="step-number">3</div>
-          <h3>Alerta</h3>
-          <p>Sinalização visual e sonora local + notificações remotas via WhatsApp, Telegram ou e-mail.</p>
-        </div>
-        <div class="step-card reveal" style="transition-delay: 0.3s;">
-          <div class="step-number">4</div>
-          <h3>Proteção</h3>
-          <p>Desligamento automático do exaustor em caso de falha crítica, prevenindo danos maiores.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="objectives-section" id="objetivos">
-    <div class="container">
-      <h2 class="section-title reveal">Nossos Objetivos Técnicos</h2>
-      <div class="objectives-list">
-        <div class="objective-item reveal">
-          <div class="objective-icon">✓</div>
-          <p><strong>Detectar falhas precisas:</strong> Utilização de sensores de rotação/parada e temperatura para identificar imediatamente quando o exaustor para de funcionar ou apresenta comportamento anormal.</p>
-        </div>
-        <div class="objective-item reveal" style="transition-delay: 0.1s;">
-          <div class="objective-icon">✓</div>
-          <p><strong>Sinalização eficiente:</strong> Implementação de alertas visuais (LEDs) e sonoros (buzzer) para notificação local imediata de qualquer falha detectada.</p>
-        </div>
-        <div class="objective-item reveal" style="transition-delay: 0.2s;">
-          <div class="objective-icon">✓</div>
-          <p><strong>Controle eletrônico inteligente:</strong> Capacidade de controlar a alimentação elétrica do exaustor, incluindo desligamento automático programável em caso de detecção de falha crítica.</p>
-        </div>
-        <div class="objective-item reveal" style="transition-delay: 0.3s;">
-          <div class="objective-icon">✓</div>
-          <p><strong>Notificações em tempo real:</strong> Sistema de alertas remotos via Wi-Fi integrado com WhatsApp, Telegram e e-mail para notificação instantânea da equipe de manutenção.</p>
-        </div>
-        <div class="objective-item reveal" style="transition-delay: 0.4s;">
-          <div class="objective-icon">✓</div>
-          <p><strong>Interface web centralizada:</strong> Página de configuração acessível remotamente permitindo ajuste de limites de temperatura, calibração de sensores, histórico de eventos e gerenciamento completo do sistema.</p>
-        </div>
-        <div class="objective-item reveal" style="transition-delay: 0.5s;">
-          <div class="objective-icon">✓</div>
-          <p><strong>Evolução contínua:</strong> Arquitetura preparada para migração futura para hardware dedicado, reduzindo custos de produção e aumentando a robustez do sistema.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- 9) EQUIPE -->
   <section class="team-section" id="equipe">
     <div class="container">
       <h2 class="section-title reveal">Nossa Equipe Especializada</h2>
@@ -1249,28 +1446,50 @@
     </div>
   </section>
 
-  <!-- Seção de Cases de Sucesso -->
-  <section class="features" id="cases">
-    <h2 class="section-title reveal">Cases de Sucesso</h2>
-    <div class="features-grid">
-      <div class="feature-card reveal">
-        <div class="feature-icon">🏭</div>
-        <h3>Indústria Metalúrgica Alfa</h3>
-  <p>Redução de 80% nos incidentes de sobreaquecimento após a implementação do sistema Exaustech, com monitoramento remoto e alertas automáticos para a equipe de manutenção.</p>
+  <!-- 10) DETALHES TÉCNICOS -->
+  <section class="about-section" id="detalhes-tecnicos">
+    <div class="about-content container">
+      <div class="about-text reveal">
+        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Detalhes Técnicos do Sistema</h2>
+        <ul style="color: var(--gray); font-size: 1.1rem; line-height: 2;">
+          <li><strong>Microcontrolador:</strong> ESP32 com conectividade Wi-Fi integrada.</li>
+          <li><strong>Sensores:</strong> Sensor de rotação (hall effect), sensor de temperatura digital (DS18B20).</li>
+          <li><strong>Atuadores:</strong> Relé de estado sólido para desligamento automático do exaustor.</li>
+          <li><strong>Interface Web:</strong> Painel responsivo para configuração, histórico de eventos e monitoramento em tempo real.</li>
+          <li><strong>Alertas Remotos:</strong> Integração via API com WhatsApp, Telegram e e-mail.</li>
+          <li><strong>Alimentação:</strong> Fonte 12V/24V DC, consumo otimizado para operação contínua.</li>
+          <li><strong>Firmware:</strong> Atualizável remotamente (OTA) para melhorias e correções futuras.</li>
+        </ul>
       </div>
-      <div class="feature-card reveal" style="transition-delay: 0.1s;">
-        <div class="feature-icon">🏢</div>
-        <h3>Centro de Distribuição Beta</h3>
-        <p>Eliminação de paradas não programadas em painéis críticos, garantindo maior disponibilidade operacional e segurança para os colaboradores.</p>
-      </div>
-      <div class="feature-card reveal" style="transition-delay: 0.2s;">
-        <div class="feature-icon">🏬</div>
-        <h3>Shopping Gama</h3>
-        <p>Monitoramento em tempo real de dezenas de painéis elétricos, com relatórios automáticos e histórico de eventos para auditoria e manutenção preditiva.</p>
+      <div class="about-image reveal" style="transition-delay: 0.2s;">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop" alt="Detalhes técnicos do sistema Exaustech">
       </div>
     </div>
   </section>
 
+  <!-- 11) FAQ -->
+  <section class="features" id="faq">
+    <h2 class="section-title reveal">Perguntas Frequentes (FAQ)</h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">❓</div>
+        <h3>O sistema Exaustech pode ser instalado em qualquer painel?</h3>
+        <p>Sim! O Exaustech foi projetado para ser compatível com a maioria dos painéis elétricos industriais e comerciais, com instalação simples e rápida.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay: 0.1s;">
+        <div class="feature-icon">🔒</div>
+        <h3>Os dados do monitoramento são seguros?</h3>
+        <p>Sim, toda a comunicação é criptografada e o acesso à interface web é protegido por autenticação.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay: 0.2s;">
+        <div class="feature-icon">⚡</div>
+        <h3>O sistema pode ser expandido?</h3>
+        <p>Sim, a arquitetura do Exaustech permite a adição de novos sensores, integração com sistemas SCADA e futuras expansões de hardware.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12) CONTATO / ORÇAMENTO -->
   <section class="contact-section" id="contato">
     <div class="container">
       <h2 class="section-title reveal">Solicite um Orçamento</h2>
@@ -1294,152 +1513,6 @@
           </div>
           <button type="submit" class="btn btn-submit">Enviar Solicitação</button>
         </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de Detalhes Técnicos -->
-  <section class="about-section" id="detalhes-tecnicos">
-    <div class="about-content container">
-      <div class="about-text reveal">
-        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Detalhes Técnicos do Sistema</h2>
-        <ul style="color: var(--gray); font-size: 1.1rem; line-height: 2;">
-          <li><strong>Microcontrolador:</strong> ESP32 com conectividade Wi-Fi integrada.</li>
-          <li><strong>Sensores:</strong> Sensor de rotação (hall effect), sensor de temperatura digital (DS18B20).</li>
-          <li><strong>Atuadores:</strong> Relé de estado sólido para desligamento automático do exaustor.</li>
-          <li><strong>Interface Web:</strong> Painel responsivo para configuração, histórico de eventos e monitoramento em tempo real.</li>
-          <li><strong>Alertas Remotos:</strong> Integração via API com WhatsApp, Telegram e e-mail.</li>
-          <li><strong>Alimentação:</strong> Fonte 12V/24V DC, consumo otimizado para operação contínua.</li>
-          <li><strong>Firmware:</strong> Atualizável remotamente (OTA) para melhorias e correções futuras.</li>
-        </ul>
-      </div>
-      <div class="about-image reveal" style="transition-delay: 0.2s;">
-  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop" alt="Detalhes técnicos do sistema Exaustech">
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de FAQ -->
-  <section class="features" id="faq">
-    <h2 class="section-title reveal">Perguntas Frequentes (FAQ)</h2>
-    <div class="features-grid">
-      <div class="feature-card reveal">
-        <div class="feature-icon">❓</div>
-        <h3>O sistema Exaustech pode ser instalado em qualquer painel?</h3>
-        <p>Sim! O Exaustech foi projetado para ser compatível com a maioria dos painéis elétricos industriais e comerciais, com instalação simples e rápida.</p>
-      </div>
-      <div class="feature-card reveal" style="transition-delay: 0.1s;">
-        <div class="feature-icon">🔒</div>
-        <h3>Os dados do monitoramento são seguros?</h3>
-        <p>Sim, toda a comunicação é criptografada e o acesso à interface web é protegido por autenticação.</p>
-      </div>
-      <div class="feature-card reveal" style="transition-delay: 0.2s;">
-        <div class="feature-icon">⚡</div>
-        <h3>O sistema pode ser expandido?</h3>
-        <p>Sim, a arquitetura do Exaustech permite a adição de novos sensores, integração com sistemas SCADA e futuras expansões de hardware.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção Instalação / Topologias -->
-  <section class="installation-section about-section" id="instalacao">
-    <div class="container">
-      <h2 class="section-title reveal">Modos de Instalação</h2>
-      <p class="reveal" style="text-align:center; max-width:900px; margin: 0 auto 20px; color: var(--gray);">A solução Exaustech pode ser implantada em duas topologias principais: múltiplos painéis conectados a um servidor central (recomendado para plantas maiores) ou com um único painel assumindo a função de servidor local (ideal para instalações pequenas).</p>
-
-      <div class="topologies-grid reveal" style="display:grid; grid-template-columns: 1fr 1fr; gap:30px; align-items:start;">
-        <!-- Topologia A: Vários painéis + Servidor Central -->
-        <div class="topology-card">
-          <h3>Topologia A — Servidor Central</h3>
-          <svg class="topo-svg" id="topoA" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1"><stop offset="0%" stop-color="#0f64ff" stop-opacity="1"/><stop offset="100%" stop-color="#ffd400" stop-opacity="1"/></linearGradient>
-            </defs>
-            <!-- servidor central -->
-            <rect x="240" y="20" width="120" height="64" rx="8" fill="url(#g1)" opacity="0.95"></rect>
-            <text x="300" y="60" text-anchor="middle" fill="#fff" font-weight="700">Servidor</text>
-
-            <!-- cliente / dashboard -->
-            <rect x="240" y="110" width="120" height="58" rx="8" fill="#fff" stroke-opacity="0.06"></rect>
-            <text x="300" y="146" text-anchor="middle" fill="#0b0b0b" font-size="13">Cliente (Dashboard)</text>
-
-            <!-- painéis -->
-            <g class="panels" fill="#fff" stroke="#0b0b0b">
-              <rect x="40" y="220" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
-              <text x="90" y="255" text-anchor="middle" fill="#0b0b0b" font-size="12">Painel 1</text>
-              <rect x="190" y="220" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
-              <text x="240" y="255" text-anchor="middle" fill="#0b0b0b" font-size="12">Painel 2</text>
-              <rect x="340" y="220" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
-              <text x="390" y="255" text-anchor="middle" fill="#0b0b0b" font-size="12">Painel 3</text>
-              <rect x="490" y="220" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
-              <text x="540" y="255" text-anchor="middle" fill="#0b0b0b" font-size="12">Painel 4</text>
-            </g>
-
-            <!-- conexões animadas: painéis -> servidor -->
-            <g stroke="url(#g1)" stroke-width="3" fill="none" stroke-linecap="round">
-              <path id="A1" d="M90 220 L300 84" class="link" stroke-dasharray="6 6" data-latency="12ms" data-port="1883"></path>
-              <path id="A2" d="M240 220 L300 84" class="link" stroke-dasharray="6 6" data-latency="9ms" data-port="1883"></path>
-              <path id="A3" d="M390 220 L300 84" class="link" stroke-dasharray="6 6" data-latency="14ms" data-port="1883"></path>
-              <path id="A4" d="M540 220 L300 84" class="link" stroke-dasharray="6 6" data-latency="20ms" data-port="1883"></path>
-            </g>
-
-            <!-- servidor -> cliente (dash) -->
-            <g stroke="rgba(255,255,255,0.85)" stroke-width="3" fill="none" stroke-linecap="round">
-              <path id="A_srv_c" d="M300 84 L300 110" stroke-dasharray="6 4"></path>
-            </g>
-          </svg>
-          <p style="color:var(--gray);">Vários painéis reportam dados para um servidor central que processa e armazena informações, disponibilizando dashboards e notificações.</p>
-        </div>
-
-        <!-- Topologia B: Um painel funciona como servidor -->
-        <div class="topology-card">
-          <h3>Topologia B — Painel Único como Servidor</h3>
-          <svg class="topo-svg" id="topoB" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="g2" x1="0" x2="1"><stop offset="0%" stop-color="#0f64ff" stop-opacity="1"/><stop offset="100%" stop-color="#ffd400" stop-opacity="1"/></linearGradient>
-            </defs>
-            <!-- painel servidor -->
-            <rect x="240" y="120" width="120" height="90" rx="8" fill="url(#g2)" opacity="0.95"></rect>
-            <text x="300" y="170" text-anchor="middle" fill="#fff" font-weight="700">Painel (Servidor)</text>
-
-            <!-- cliente / dashboard -->
-            <rect x="30" y="200" width="120" height="58" rx="8" fill="#fff" stroke-opacity="0.06"></rect>
-            <text x="90" y="236" text-anchor="middle" fill="#0b0b0b" font-size="13">Cliente</text>
-
-            <!-- dispositivos locais -->
-            <g class="local-devices" fill="#fff" stroke="#0b0b0b">
-              <rect x="120" y="40" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
-              <text x="170" y="75" text-anchor="middle" fill="#0b0b0b" font-size="12">Sensor A</text>
-              <rect x="380" y="40" width="100" height="64" rx="8" fill="#fff" stroke-opacity="0.12"></rect>
-              <text x="430" y="75" text-anchor="middle" fill="#0b0b0b" font-size="12">Sensor B</text>
-            </g>
-
-            <!-- conexões curtas (sensores -> painel) -->
-            <g stroke="url(#g2)" stroke-width="3" fill="none" stroke-linecap="round">
-              <path id="B1" d="M170 104 L300 140" class="link2" stroke-dasharray="6 6" data-latency="6ms" data-port="1883"></path>
-              <path id="B2" d="M430 104 L300 140" class="link2" stroke-dasharray="6 6" data-latency="7ms" data-port="1883"></path>
-            </g>
-
-            <!-- painel -> cliente (dash) -->
-            <g stroke="url(#g2)" stroke-width="3" fill="none" stroke-linecap="round">
-              <path id="B_srv_c" d="M240 170 L150 236" stroke-dasharray="6 4"></path>
-            </g>
-          </svg>
-          <p style="color:var(--gray);">Um painel realiza coleta e também oferece serviços de servidor, útil quando a rede é pequena ou não há infraestrutura dedicada.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:18px; color:var(--gray);">
-        <h4 style="margin-bottom:8px;">Instruções rápidas de instalação</h4>
-        <ul style="line-height:1.8; max-width:900px; margin:0 auto 40px; color:var(--gray);">
-          <li><strong>Servidor central:</strong> máquina com Node/NGINX opcional, IP fixo ou DNS, porta 443 configurada; configure painéis para apontar para o endereço do servidor.</li>
-          <li><strong>Painel como servidor:</strong> configure o painel para modo AP ou roteado, ative serviço local e verifique NAT/firewall; útil para pequenos sites sem servidor dedicado.</li>
-          <li><strong>Segurança:</strong> use TLS, autenticação por token e firewall. Para redes industriais, segmentação VLAN e regras de acesso restrito.</li>
-        </ul>
-      </div>
-      <div style="text-align:center; margin-top:6px;">
-        <button id="simStart" class="btn btn-primary" style="margin-right:8px;">Iniciar Simulação</button>
-        <button id="simStop" class="btn btn-outline">Parar Simulação</button>
       </div>
     </div>
   </section>
@@ -1639,6 +1712,24 @@
       });
     }
 
+    // Install tabs behavior
+    const tabButtons = document.querySelectorAll('.install-tab');
+    const tabPanels = document.querySelectorAll('.install-panel');
+    function activateInstallTab(targetSelector) {
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabPanels.forEach(panel => panel.classList.remove('active'));
+      const btn = Array.from(tabButtons).find(b => b.getAttribute('data-target') === targetSelector);
+      const panel = document.querySelector(targetSelector);
+      if (btn) btn.classList.add('active');
+      if (panel) panel.classList.add('active');
+    }
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target');
+        activateInstallTab(target);
+      });
+    });
+
     // trigger counters when stats-section enters view
     const statsSection = document.querySelector('.stats-section');
     if (statsSection) {
@@ -1670,7 +1761,7 @@
 
     /* small parallax transform applied via CSS variable (used in a follow-up) */
 
-    // ------- SVG interactivity & simulator -------
+  // ------- SVG interatividade & simulador (opcional, protegido por checagens) -------
     const tooltip = document.getElementById('svgTooltip');
 
     function showTooltip(text, x, y) {
@@ -1686,30 +1777,33 @@
       tooltip.setAttribute('aria-hidden', 'true');
     }
 
-    // highlight on hover and show tooltip using data attributes
-    document.querySelectorAll('.topo-svg .link, .topo-svg .link2, .topo-svg path[id$="_srv_c"]').forEach(path => {
-      path.addEventListener('mouseenter', (e) => {
-        path.style.strokeWidth = 5;
-        path.style.opacity = 0.95;
-        const rect = path.getBoundingClientRect();
-        const latency = path.getAttribute('data-latency') || '';
-        const port = path.getAttribute('data-port') || '';
-        const isSrv = /_srv_c$/.test(path.id);
-        if (isSrv) {
-          showTooltip(`fluxo: servidor → cliente`, rect.left + rect.width/2, rect.top + 8);
-        } else {
-          showTooltip(`latência: ${latency} ${port ? '• porta: ' + port : ''}`, rect.left + rect.width/2, rect.top + 8);
-        }
+    // destaque ao passar o mouse e tooltip (se os SVGs existirem)
+    const topoPaths = document.querySelectorAll('.topo-svg .link, .topo-svg .link2, .topo-svg path[id$="_srv_c"]');
+    if (topoPaths.length) {
+      topoPaths.forEach(path => {
+        path.addEventListener('mouseenter', (e) => {
+          path.style.strokeWidth = 5;
+          path.style.opacity = 0.95;
+          const rect = path.getBoundingClientRect();
+          const latency = path.getAttribute('data-latency') || '';
+          const port = path.getAttribute('data-port') || '';
+          const isSrv = /_srv_c$/.test(path.id);
+          if (isSrv) {
+            showTooltip(`fluxo: servidor → cliente`, rect.left + rect.width/2, rect.top + 8);
+          } else {
+            showTooltip(`latência: ${latency} ${port ? '• porta: ' + port : ''}`, rect.left + rect.width/2, rect.top + 8);
+          }
+        });
+        path.addEventListener('mousemove', (e) => {
+          showTooltip(tooltip.textContent, e.clientX, e.clientY - 12);
+        });
+        path.addEventListener('mouseleave', (e) => {
+          path.style.strokeWidth = '';
+          path.style.opacity = '';
+          hideTooltip();
+        });
       });
-      path.addEventListener('mousemove', (e) => {
-        showTooltip(tooltip.textContent, e.clientX, e.clientY - 12);
-      });
-      path.addEventListener('mouseleave', (e) => {
-        path.style.strokeWidth = '';
-        path.style.opacity = '';
-        hideTooltip();
-      });
-    });
+    }
 
     // simulator: animate bubbles along SVG paths
     let simInterval = null;
@@ -1763,8 +1857,12 @@
       activeBubbles.clear();
     }
 
-    document.getElementById('simStart').addEventListener('click', () => startSimulation());
-    document.getElementById('simStop').addEventListener('click', () => stopSimulation());
+    const simStartBtn = document.getElementById('simStart');
+    const simStopBtn = document.getElementById('simStop');
+    if (simStartBtn && simStopBtn) {
+      simStartBtn.addEventListener('click', () => startSimulation());
+      simStopBtn.addEventListener('click', () => stopSimulation());
+    }
   </script>
 </body>
 </html>
