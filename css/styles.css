@@ -304,6 +304,13 @@ nav a:hover::after {
   outline: 2px solid var(--primary-orange);
   border-radius: 6px;
 }
+.more-toggle {
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+.more-toggle:hover {
+  color: var(--primary-orange);
+}
 .dropdown {
   position: absolute;
   right: 0;
@@ -358,6 +365,11 @@ nav a:hover::after {
   overflow: hidden;
 }
 
+/* Em modo escuro, garantir contraste ajustando a cor do texto da hero */
+[data-theme="dark"] .hero {
+  color: var(--text-primary);
+}
+
 .hero::before {
   content: "";
   position: absolute;
@@ -373,6 +385,33 @@ nav a:hover::after {
 .hero-content {
   position: relative;
   z-index: 1;
+}
+
+/* Ícone decorativo dentro da hero: entre o background (::before) e o texto */
+.hero-decor {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  transform: translateX(-50%);
+  width: 320px;
+  max-width: 70%;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0; /* abaixo do texto, mas acima do background (::before) porque .hero-content tem z-index:1 */
+}
+
+/* Garantir que os elementos de texto fiquem acima do decor */
+.hero-content > :not(.hero-decor) {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 600px) {
+  .hero-decor {
+    width: 180px;
+    top: 6%;
+    opacity: 0.4;
+  }
 }
 
 .hero h1 {
@@ -396,6 +435,24 @@ nav a:hover::after {
   justify-content: center;
   flex-wrap: wrap;
   animation: fadeInUp 1s ease 0.4s both;
+}
+
+/* ========================================
+   HERO LOGO
+   ======================================== */
+#hero-logo {
+  display: block;
+  margin: 0 auto 18px;
+  max-width: 260px;
+  width: 50%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  #hero-logo {
+    width: 320px;
+    margin-bottom: 22px;
+  }
 }
 
 /* ========================================

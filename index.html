@@ -60,9 +60,10 @@
       <div class="container">
         <div class="nav-wrapper">
           <img
-            src="Logo.svg"
+            src="images/icon_nome.svg"
             alt="Exaustech Logo"
             class="logo"
+            id="logo"
             width="160"
             height="50"
             style="object-fit: contain"
@@ -117,9 +118,6 @@
                 />
               </svg>
             </button>
-            <a href="#contato" class="btn header-cta" title="Contato"
-              >Contato</a
-            >
           </div>
 
           <nav id="mainNav" role="navigation" aria-label="Navegação Principal">
@@ -163,7 +161,22 @@
        ======================================== -->
     <section class="hero" id="home">
       <div class="hero-content">
-        <h1>Sistema Exaustech</h1>
+        <!-- ícone decorativo (cinza) - aria-hidden porque é puramente decorativo -->
+        <img
+          src="images/icon_cinza.svg"
+          alt=""
+          aria-hidden="true"
+          class="hero-decor"
+        />
+
+        <img
+          src="images/nome.svg"
+          alt="Logo Exaustech"
+          id="hero-logo"
+          width="220"
+          height="70"
+          style="object-fit: contain"
+        />
         <p>Monitoramento Inteligente de Exaustores para Painéis Elétricos</p>
         <div class="cta-buttons">
           <a href="#sobre" class="btn btn-primary">Conheça a Solução</a>
@@ -540,62 +553,6 @@
     </section>
 
     <!-- ========================================
-       9) EQUIPE
-       ======================================== -->
-    <section class="team-section" id="equipe">
-      <div class="container">
-        <h2 class="section-title reveal">Nossa Equipe Especializada</h2>
-        <div class="team-grid">
-          <div class="team-member reveal">
-            <h4>Osmar da Silva Junior</h4>
-            <span>Gerência Organizacional / Operacional</span>
-            <p>
-              Responsável por coordenar a equipe, gerir recursos e prazos,
-              definir metodologias de trabalho e garantir a qualidade final do
-              serviço entregue.
-            </p>
-          </div>
-          <div class="team-member reveal" style="transition-delay: 0.1s">
-            <h4>Franciel Paulino da Silva</h4>
-            <span>Engenharia de Produto / P&D</span>
-            <p>
-              Projeta e aprimora hardware e firmware, desenvolve a interface
-              web, pesquisa novas tecnologias e busca soluções inovadoras para o
-              sistema.
-            </p>
-          </div>
-          <div class="team-member reveal" style="transition-delay: 0.2s">
-            <h4>Claudevan de Lima</h4>
-            <span>Gestão Financeira</span>
-            <p>
-              Controla custos do projeto, elabora orçamentos detalhados, define
-              estratégias de precificação e gerencia o fluxo de caixa da
-              operação.
-            </p>
-          </div>
-          <div class="team-member reveal" style="transition-delay: 0.3s">
-            <h4>Jadson Barreto Silva</h4>
-            <span>Instalação e Suporte Técnico</span>
-            <p>
-              Realiza instalações em campo, executa manutenção preventiva e
-              corretiva, oferece suporte técnico e treina clientes no uso do
-              sistema.
-            </p>
-          </div>
-          <div class="team-member reveal" style="transition-delay: 0.4s">
-            <h4>Kael Victor Fernandes Silva</h4>
-            <span>Marketing e Comunicação</span>
-            <p>
-              Desenvolve estratégias de divulgação do produto, cria campanhas e
-              materiais de apresentação, e gerencia toda a comunicação com
-              clientes.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================
        10) DETALHES TÉCNICOS
        ======================================== -->
     <section class="about-section" id="detalhes-tecnicos">
@@ -736,6 +693,62 @@
                 limitados.
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       9) EQUIPE
+       ======================================== -->
+    <section class="team-section" id="equipe">
+      <div class="container">
+        <h2 class="section-title reveal">Nossa Equipe Especializada</h2>
+        <div class="team-grid">
+          <div class="team-member reveal">
+            <h4>Osmar da Silva Junior</h4>
+            <span>Gerência Organizacional / Operacional</span>
+            <p>
+              Responsável por coordenar a equipe, gerir recursos e prazos,
+              definir metodologias de trabalho e garantir a qualidade final do
+              serviço entregue.
+            </p>
+          </div>
+          <div class="team-member reveal" style="transition-delay: 0.1s">
+            <h4>Franciel Paulino da Silva</h4>
+            <span>Engenharia de Produto / P&D</span>
+            <p>
+              Projeta e aprimora hardware e firmware, desenvolve a interface
+              web, pesquisa novas tecnologias e busca soluções inovadoras para o
+              sistema.
+            </p>
+          </div>
+          <div class="team-member reveal" style="transition-delay: 0.2s">
+            <h4>Claudevan de Lima</h4>
+            <span>Gestão Financeira</span>
+            <p>
+              Controla custos do projeto, elabora orçamentos detalhados, define
+              estratégias de precificação e gerencia o fluxo de caixa da
+              operação.
+            </p>
+          </div>
+          <div class="team-member reveal" style="transition-delay: 0.3s">
+            <h4>Jadson Barreto Silva</h4>
+            <span>Instalação e Suporte Técnico</span>
+            <p>
+              Realiza instalações em campo, executa manutenção preventiva e
+              corretiva, oferece suporte técnico e treina clientes no uso do
+              sistema.
+            </p>
+          </div>
+          <div class="team-member reveal" style="transition-delay: 0.4s">
+            <h4>Kael Victor Fernandes Silva</h4>
+            <span>Marketing e Comunicação</span>
+            <p>
+              Desenvolve estratégias de divulgação do produto, cria campanhas e
+              materiais de apresentação, e gerencia toda a comunicação com
+              clientes.
+            </p>
           </div>
         </div>
       </div>
