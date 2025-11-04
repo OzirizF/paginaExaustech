@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Exaustech - Excelência em Soluções de Monitoramento Inteligente
+    </title>
+
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      href="favicon.ico?v=20251017"
+      sizes="any"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="favicon-32.png?v=20251017"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="apple-touch-icon.png?v=20251017"
+      sizes="180x180"
+    />
+
+    <!-- Theme Color -->
+    <meta
+      name="theme-color"
+      content="#FF6A00"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Sistema Exaustech - Monitoramento Inteligente de Exaustores para Painéis Elétricos. Segurança, eficiência e inovação para sua empresa."
+    />
+    <meta
+      name="keywords"
+      content="monitoramento, exaustores, painéis elétricos, IoT, segurança industrial, automação"
+    />
+    <meta name="author" content="Exaustech" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- ========================================
+       HEADER & NAVIGATION
+       ======================================== -->
+    <header>
+      <div class="container">
+        <div class="nav-wrapper">
+          <img
+            src="Logo.svg"
+            alt="Exaustech Logo"
+            class="logo"
+            width="160"
+            height="50"
+            style="object-fit: contain"
+          />
+
+          <div class="nav-controls">
+            <button
+              class="menu-toggle"
+              type="button"
+              aria-controls="mainNav"
+              aria-expanded="false"
+              aria-label="Abrir menu"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </button>
+
+            <button
+              class="theme-toggle"
+              id="themeToggle"
+              aria-label="Alternar modo escuro"
+              title="Alternar modo escuro"
+            >
+              <svg
+                class="sun-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+              <svg
+                class="moon-icon"
+                style="display: none"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            </button>
+            <a href="#contato" class="btn header-cta" title="Contato"
+              >Contato</a
+            >
+          </div>
+
+          <nav id="mainNav" role="navigation" aria-label="Navegação Principal">
+            <ul class="primary-nav">
+              <li><a href="#home">Início</a></li>
+              <li><a href="#sobre">A Solução</a></li>
+              <li><a href="#como-funciona">Como Funciona</a></li>
+              <li><a href="#servicos">Benefícios</a></li>
+              <li><a href="#instalacao">Instalação</a></li>
+              <li><a href="#objetivos">Objetivos</a></li>
+              <li class="more-dropdown">
+                <button
+                  class="more-toggle"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  aria-controls="moreMenu"
+                >
+                  Mais ▾
+                </button>
+                <ul id="moreMenu" class="dropdown" role="menu">
+                  <li role="menuitem">
+                    <a href="#missao-visao-valores">Missão • Visão • Valores</a>
+                  </li>
+                  <li role="menuitem"><a href="#cases">Cases</a></li>
+                  <li role="menuitem"><a href="#equipe">Equipe</a></li>
+                  <li role="menuitem">
+                    <a href="#detalhes-tecnicos">Detalhes Técnicos</a>
+                  </li>
+                  <li role="menuitem"><a href="#faq">FAQ</a></li>
+                  <li role="menuitem"><a href="#contato">Contato</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================================
+       HERO SECTION
+       ======================================== -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Sistema Exaustech</h1>
+        <p>Monitoramento Inteligente de Exaustores para Painéis Elétricos</p>
+        <div class="cta-buttons">
+          <a href="#sobre" class="btn btn-primary">Conheça a Solução</a>
+          <a href="#contato" class="btn btn-outline">Solicite um Orçamento</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       1) A SOLUÇÃO
+       ======================================== -->
+    <section class="about-section" id="sobre">
+      <div class="about-content container">
+        <div class="about-text reveal">
+          <h2
+            class="section-title"
+            style="text-align: left; margin-bottom: 20px"
+          >
+            A Solução Definitiva
+          </h2>
+          <h3>Monitoramento Inteligente para Painéis Elétricos</h3>
+          <p>
+            <strong>O Problema:</strong> A ventilação é indispensável para
+            garantir a operação segura e confiável de painéis elétricos.
+            Atualmente, quando um exaustor falha ou trava, ele permanece
+            energizado sem aviso ao operador, aumentando significativamente os
+            riscos de superaquecimento, danos a componentes eletrônicos
+            sensíveis e até mesmo incêndios.
+          </p>
+          <p>
+            <strong>Nossa Solução:</strong> O Sistema Exaustech é um protótipo
+            inovador que monitora continuamente o funcionamento do exaustor
+            através de sensores de rotação e temperatura. O sistema sinaliza
+            falhas tanto localmente (visual e sonoro) quanto remotamente,
+            desliga automaticamente o equipamento em caso de anomalia e oferece
+            uma interface web completa para configuração e gerenciamento.
+          </p>
+          <p>
+            <strong>Investimento inteligente:</strong> Custo-benefício imbatível
+            comparado aos danos evitados e à segurança garantida.
+          </p>
+        </div>
+        <div class="about-image reveal" style="transition-delay: 0.2s">
+          <img
+            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920&auto=format&fit=crop"
+            alt="Painel elétrico com sistema de monitoramento"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       2) COMO FUNCIONA
+       ======================================== -->
+    <section class="how-works-section" id="como-funciona">
+      <div class="container">
+        <h2 class="section-title reveal">Como Funciona</h2>
+        <div class="steps-grid">
+          <div class="step-card reveal">
+            <div class="step-number">1</div>
+            <h3>Detecção</h3>
+            <p>
+              Sensores monitoram continuamente a rotação do exaustor e a
+              temperatura do painel elétrico.
+            </p>
+          </div>
+          <div class="step-card reveal" style="transition-delay: 0.1s">
+            <div class="step-number">2</div>
+            <h3>Análise</h3>
+            <p>
+              O sistema processa os dados em tempo real e identifica qualquer
+              anomalia no funcionamento.
+            </p>
+          </div>
+          <div class="step-card reveal" style="transition-delay: 0.2s">
+            <div class="step-number">3</div>
+            <h3>Alerta</h3>
+            <p>
+              Sinalização visual e sonora local + notificações remotas via
+              WhatsApp, Telegram ou e-mail.
+            </p>
+          </div>
+          <div class="step-card reveal" style="transition-delay: 0.3s">
+            <div class="step-number">4</div>
+            <h3>Proteção</h3>
+            <p>
+              Desligamento automático do exaustor em caso de falha crítica,
+              prevenindo danos maiores.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       3) BENEFÍCIOS
+       ======================================== -->
+    <section class="features" id="servicos">
+      <h2 class="section-title reveal">Por que nosso sistema é essencial?</h2>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              ></path>
+            </svg>
+          </div>
+          <h3>Segurança e Prevenção</h3>
+          <p>
+            Previne sobreaquecimento, falhas críticas e riscos de incêndio,
+            garantindo a operação segura dos seus equipamentos.
+          </p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay: 0.1s">
+          <div class="feature-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+              ></path>
+            </svg>
+          </div>
+          <h3>Eficiência e Vida Útil</h3>
+          <p>
+            Assegura a operação estável dos painéis elétricos e aumenta a vida
+            útil dos componentes com um custo-benefício imbatível.
+          </p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay: 0.2s">
+          <div class="feature-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+              ></path>
+            </svg>
+          </div>
+          <h3>Inovação e Controle</h3>
+          <p>
+            Monitore, receba alertas e gerencie seus equipamentos remotamente
+            através de uma interface web moderna e notificações em tempo real.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       4) INDICADORES
+       ======================================== -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <h3>
+            <span class="count" data-count="100">0</span
+            ><span class="unit">%</span>
+          </h3>
+          <p>Cobertura de Monitoramento</p>
+          <small class="stat-desc"
+            >Percentual estimado de pontos monitorados pelo sistema</small
+          >
+        </div>
+        <div class="stat-item reveal" style="transition-delay: 0.1s">
+          <h3>
+            <span class="count" data-count="24">0</span
+            ><span class="unit">/7</span>
+          </h3>
+          <p>Monitoramento Contínuo</p>
+          <small class="stat-desc"
+            >Serviço ativo 24 horas por dia, 7 dias por semana</small
+          >
+        </div>
+        <div class="stat-item reveal" style="transition-delay: 0.2s">
+          <h3 class="stat-text">MQTT</h3>
+          <p>Protocolo IoT</p>
+          <small class="stat-desc"
+            >Suporta MQTT, HTTP e integrações para envio de telemetria</small
+          >
+        </div>
+        <div class="stat-item reveal" style="transition-delay: 0.3s">
+          <h3 class="stat-text">Web</h3>
+          <p>Dashboard Responsivo</p>
+          <small class="stat-desc"
+            >Acesso via navegador para monitoramento e relatórios</small
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       6) OBJETIVOS TÉCNICOS
+       ======================================== -->
+    <section class="objectives-section" id="objetivos">
+      <div class="container">
+        <h2 class="section-title reveal">Nossos Objetivos Técnicos</h2>
+        <div class="objectives-list">
+          <div class="objective-item reveal">
+            <div class="objective-icon">✓</div>
+            <p>
+              <strong>Detectar falhas precisas:</strong> Utilização de sensores
+              de rotação/parada e temperatura para identificar imediatamente
+              quando o exaustor para de funcionar ou apresenta comportamento
+              anormal.
+            </p>
+          </div>
+          <div class="objective-item reveal" style="transition-delay: 0.1s">
+            <div class="objective-icon">✓</div>
+            <p>
+              <strong>Sinalização eficiente:</strong> Implementação de alertas
+              visuais (LEDs) e sonoros (buzzer) para notificação local imediata
+              de qualquer falha detectada.
+            </p>
+          </div>
+          <div class="objective-item reveal" style="transition-delay: 0.2s">
+            <div class="objective-icon">✓</div>
+            <p>
+              <strong>Controle eletrônico inteligente:</strong> Capacidade de
+              controlar a alimentação elétrica do exaustor, incluindo
+              desligamento automático programável em caso de detecção de falha
+              crítica.
+            </p>
+          </div>
+          <div class="objective-item reveal" style="transition-delay: 0.3s">
+            <div class="objective-icon">✓</div>
+            <p>
+              <strong>Notificações em tempo real:</strong> Sistema de alertas
+              remotos via Wi-Fi integrado com WhatsApp, Telegram e e-mail para
+              notificação instantânea da equipe de manutenção.
+            </p>
+          </div>
+          <div class="objective-item reveal" style="transition-delay: 0.4s">
+            <div class="objective-icon">✓</div>
+            <p>
+              <strong>Interface web centralizada:</strong> Página de
+              configuração acessível remotamente permitindo ajuste de limites de
+              temperatura, calibração de sensores, histórico de eventos e
+              gerenciamento completo do sistema.
+            </p>
+          </div>
+          <div class="objective-item reveal" style="transition-delay: 0.5s">
+            <div class="objective-icon">✓</div>
+            <p>
+              <strong>Evolução contínua:</strong> Arquitetura preparada para
+              migração futura para hardware dedicado, reduzindo custos de
+              produção e aumentando a robustez do sistema.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       7) MISSÃO • VISÃO • VALORES
+       ======================================== -->
+    <section class="features" id="missao-visao-valores">
+      <h2 class="section-title reveal">Missão, Visão e Valores</h2>
+      <div class="features-grid">
+        <div class="feature-card reveal accord" data-key="missao">
+          <div class="feature-icon">🎯</div>
+          <h3>Missão</h3>
+          <div class="card-content">
+            <p>
+              Nossa missão é proteger ativos elétricos e pessoas por meio de
+              soluções de monitoramento acessíveis, confiáveis e fáceis de usar,
+              reduzindo riscos e aumentando a disponibilidade operacional.
+            </p>
+          </div>
+        </div>
+        <div
+          class="feature-card reveal accord"
+          data-key="visao"
+          style="transition-delay: 0.1s"
+        >
+          <div class="feature-icon">🔭</div>
+          <h3>Visão</h3>
+          <div class="card-content">
+            <p>
+              Ser referência nacional em tecnologia de monitoramento para
+              painéis elétricos, oferecendo plataformas inteligentes que
+              antecipam falhas e promovem a manutenção preditiva em indústrias e
+              serviços.
+            </p>
+          </div>
+        </div>
+        <div
+          class="feature-card reveal accord"
+          data-key="valores"
+          style="transition-delay: 0.2s; text-align: left"
+        >
+          <div class="feature-icon">🤝</div>
+          <h3>Valores</h3>
+          <div class="card-content">
+            <ul
+              style="
+                list-style: disc;
+                margin-left: 1rem;
+                color: var(--gray);
+                line-height: 1.8;
+              "
+            >
+              <li>Segurança em primeiro lugar</li>
+              <li>Transparência e ética</li>
+              <li>Inovação contínua</li>
+              <li>Foco no cliente</li>
+              <li>Responsabilidade ambiental</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       8) CASES
+       ======================================== -->
+    <section class="features" id="cases">
+      <h2 class="section-title reveal">Cases de Sucesso</h2>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">🏭</div>
+          <h3>Indústria Metalúrgica Alfa</h3>
+          <p>
+            Redução de 80% nos incidentes de sobreaquecimento após a
+            implementação do sistema Exaustech, com monitoramento remoto e
+            alertas automáticos para a equipe de manutenção.
+          </p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay: 0.1s">
+          <div class="feature-icon">🏢</div>
+          <h3>Centro de Distribuição Beta</h3>
+          <p>
+            Eliminação de paradas não programadas em painéis críticos,
+            garantindo maior disponibilidade operacional e segurança para os
+            colaboradores.
+          </p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay: 0.2s">
+          <div class="feature-icon">🏬</div>
+          <h3>Shopping Gama</h3>
+          <p>
+            Monitoramento em tempo real de dezenas de painéis elétricos, com
+            relatórios automáticos e histórico de eventos para auditoria e
+            manutenção preditiva.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       9) EQUIPE
+       ======================================== -->
+    <section class="team-section" id="equipe">
+      <div class="container">
+        <h2 class="section-title reveal">Nossa Equipe Especializada</h2>
+        <div class="team-grid">
+          <div class="team-member reveal">
+            <h4>Osmar da Silva Junior</h4>
+            <span>Gerência Organizacional / Operacional</span>
+            <p>
+              Responsável por coordenar a equipe, gerir recursos e prazos,
+              definir metodologias de trabalho e garantir a qualidade final do
+              serviço entregue.
+            </p>
+          </div>
+          <div class="team-member reveal" style="transition-delay: 0.1s">
+            <h4>Franciel Paulino da Silva</h4>
+            <span>Engenharia de Produto / P&D</span>
+            <p>
+              Projeta e aprimora hardware e firmware, desenvolve a interface
+              web, pesquisa novas tecnologias e busca soluções inovadoras para o
+              sistema.
+            </p>
+          </div>
+          <div class="team-member reveal" style="transition-delay: 0.2s">
+            <h4>Claudevan de Lima</h4>
+            <span>Gestão Financeira</span>
+            <p>
+              Controla custos do projeto, elabora orçamentos detalhados, define
+              estratégias de precificação e gerencia o fluxo de caixa da
+              operação.
+            </p>
+          </div>
+          <div class="team-member reveal" style="transition-delay: 0.3s">
+            <h4>Jadson Barreto Silva</h4>
+            <span>Instalação e Suporte Técnico</span>
+            <p>
+              Realiza instalações em campo, executa manutenção preventiva e
+              corretiva, oferece suporte técnico e treina clientes no uso do
+              sistema.
+            </p>
+          </div>
+          <div class="team-member reveal" style="transition-delay: 0.4s">
+            <h4>Kael Victor Fernandes Silva</h4>
+            <span>Marketing e Comunicação</span>
+            <p>
+              Desenvolve estratégias de divulgação do produto, cria campanhas e
+              materiais de apresentação, e gerencia toda a comunicação com
+              clientes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       10) DETALHES TÉCNICOS
+       ======================================== -->
+    <section class="about-section" id="detalhes-tecnicos">
+      <div class="about-content container">
+        <div class="about-text reveal">
+          <h2
+            class="section-title"
+            style="text-align: left; margin-bottom: 20px"
+          >
+            Detalhes Técnicos do Sistema
+          </h2>
+          <ul style="color: var(--gray); font-size: 1.1rem; line-height: 2">
+            <li>
+              <strong>Microcontrolador:</strong> ESP32 com conectividade Wi-Fi
+              integrada.
+            </li>
+            <li>
+              <strong>Sensores:</strong> Sensor de rotação (hall effect), sensor
+              de temperatura digital (DS18B20).
+            </li>
+            <li>
+              <strong>Atuadores:</strong> Relé de estado sólido para
+              desligamento automático do exaustor.
+            </li>
+            <li>
+              <strong>Interface Web:</strong> Painel responsivo para
+              configuração, histórico de eventos e monitoramento em tempo real.
+            </li>
+            <li>
+              <strong>Alertas Remotos:</strong> Integração via API com WhatsApp,
+              Telegram e e-mail.
+            </li>
+            <li>
+              <strong>Alimentação:</strong> Fonte 12V/24V DC, consumo otimizado
+              para operação contínua.
+            </li>
+            <li>
+              <strong>Firmware:</strong> Atualizável remotamente (OTA) para
+              melhorias e correções futuras.
+            </li>
+          </ul>
+        </div>
+        <div class="about-image reveal" style="transition-delay: 0.2s">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop"
+            alt="Detalhes técnicos do sistema Exaustech"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       11) FAQ
+       ======================================== -->
+    <section class="features" id="faq">
+      <h2 class="section-title reveal">Perguntas Frequentes (FAQ)</h2>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">❓</div>
+          <h3>O sistema Exaustech pode ser instalado em qualquer painel?</h3>
+          <p>
+            Sim! O Exaustech foi projetado para ser compatível com a maioria dos
+            painéis elétricos industriais e comerciais, com instalação simples e
+            rápida.
+          </p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay: 0.1s">
+          <div class="feature-icon">🔒</div>
+          <h3>Os dados do monitoramento são seguros?</h3>
+          <p>
+            Sim, toda a comunicação é criptografada e o acesso à interface web é
+            protegido por autenticação.
+          </p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay: 0.2s">
+          <div class="feature-icon">⚡</div>
+          <h3>O sistema pode ser expandido?</h3>
+          <p>
+            Sim, a arquitetura do Exaustech permite a adição de novos sensores,
+            integração com sistemas SCADA e futuras expansões de hardware.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       INSTALAÇÃO (SIMPLIFICADA) — POSICIONADA ACIMA DO ORÇAMENTO
+       ======================================== -->
+    <section class="about-section" id="instalacao">
+      <div class="container">
+        <h2 class="section-title reveal">Instalação — Opções</h2>
+        <p
+          class="reveal"
+          style="
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 12px;
+            color: var(--gray);
+          "
+        >
+          Escolha entre um servidor central para múltiplos painéis ou o modo
+          local no próprio painel.
+        </p>
+        <div class="features-grid">
+          <div class="feature-card reveal">
+            <h3>Servidor Central</h3>
+            <ul
+              style="
+                color: var(--text-secondary);
+                line-height: 1.8;
+                margin-left: 1.2rem;
+              "
+            >
+              <li>
+                <strong>Prós:</strong> Escalável, centraliza dados, relatórios e
+                integrações.
+              </li>
+              <li>
+                <strong>Contras:</strong> Exige servidor/VM, configuração de
+                rede e TLS.
+              </li>
+            </ul>
+          </div>
+          <div class="feature-card reveal" style="transition-delay: 0.1s">
+            <h3>Painel como Servidor</h3>
+            <ul
+              style="
+                color: var(--text-secondary);
+                line-height: 1.8;
+                margin-left: 1.2rem;
+              "
+            >
+              <li>
+                <strong>Prós:</strong> Simples, menor custo, implantação rápida.
+              </li>
+              <li>
+                <strong>Contras:</strong> Menos escalável, recursos locais
+                limitados.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       12) CONTATO / ORÇAMENTO
+       ======================================== -->
+    <section class="contact-section" id="contato">
+      <div class="container">
+        <h2 class="section-title reveal">Solicite um Orçamento</h2>
+        <div class="contact-form reveal">
+          <form>
+            <div class="form-group">
+              <label for="name">Nome Completo</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail Corporativo</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefone / WhatsApp</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label for="message">Como podemos ajudar?</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-submit">
+              Enviar Solicitação
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+       FOOTER
+       ======================================== -->
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2024 Exaustech - Sistema de Monitoramento Inteligente. Todos os
+          direitos reservados.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn" title="LinkedIn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+              />
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram" title="Instagram">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+          </a>
+          <a href="#" aria-label="WhatsApp" title="WhatsApp">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
+              />
+            </svg>
+          </a>
+          <a href="#" aria-label="E-mail" title="E-mail">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta">
+      <a href="#contato" class="btn btn-primary" title="Solicitar Orçamento"
+        >Orçamento</a
+      >
+      <a href="#sobre" class="btn btn-outline" title="Saiba Mais">Saiba Mais</a>
+    </div>
+
+    <!-- Back to Top -->
+    <button
+      class="back-to-top"
+      id="backToTop"
+      aria-label="Voltar ao topo"
+      title="Voltar ao topo"
+    >
+      ↑
+    </button>
+
+    <!-- SVG Tooltip -->
+    <div
+      id="svgTooltip"
+      class="svg-tooltip"
+      role="status"
+      aria-hidden="true"
+    ></div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
