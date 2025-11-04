@@ -436,6 +436,23 @@ nav a:hover::after {
   animation: fadeInUp 1s ease 0.4s both;
 }
 
+/* Imagens de exemplo usadas em cards (instalação, etc.) */
+.example-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 24px var(--shadow-color);
+  margin-bottom: 12px;
+  background: var(--bg-primary);
+}
+
+.feature-card .example-image {
+  max-height: 280px;
+  object-fit: cover;
+}
+
 /* ========================================
    HERO LOGO
    ======================================== */
