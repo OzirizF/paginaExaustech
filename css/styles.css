@@ -356,7 +356,7 @@ nav a:hover::after {
    HERO SECTION
    ======================================== */
 .hero {
-  background: var(--gradient-primary);
+  background: var(--gradient-hover);
   color: var(--white);
   padding: 100px 20px;
   text-align: center;
@@ -390,9 +390,9 @@ nav a:hover::after {
 .hero-decor {
   position: absolute;
   left: 50%;
-  top: 8%;
+  top: -50%;
   transform: translateX(-50%);
-  width: 320px;
+  width: 490px;
   max-width: 70%;
   opacity: 0.4;
   pointer-events: none;
@@ -501,13 +501,38 @@ nav a:hover::after {
   box-shadow: 0 6px 20px rgba(255, 106, 0, 0.4);
 }
 
+/* Botão outline - estilo padrão (modo claro) */
 .btn-outline {
   background: transparent;
-  color: var(--white);
-  border: 2px solid var(--white);
+  color: var(--primary-orange);
+  border: 2px solid var(--primary-orange);
+  transition: all 0.2s ease;
 }
 
 .btn-outline:hover {
+  background: var(--primary-orange);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+/* Overrides para modo escuro */
+[data-theme="dark"] .btn-outline {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+  background: var(--white);
+  color: var(--primary-orange);
+  transform: translateY(-3px);
+}
+
+.btn-1outline {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.btn-1outline:hover {
   background: var(--white);
   color: var(--primary-orange);
   transform: translateY(-3px);
@@ -580,6 +605,66 @@ nav a:hover::after {
 .features {
   padding: 80px 20px;
   background: transparent;
+}
+
+/* Permitir posicionamento absoluto de marcas-d'água dentro das seções */
+.features,
+footer,
+header {
+  position: relative;
+}
+
+/* Estilos gerais para ícones decorativos (marca-d'água) */
+.decor-icon {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.12;
+  z-index: 0;
+  user-select: none;
+  filter: saturate(0%);
+}
+
+/* Header: pequeno ícone à direita */
+.decor-header {
+  top: 12%;
+  right: 4%;
+  width: 140px;
+  max-width: 30%;
+}
+
+/* Features: marca-d'água grande atrás do conteúdo */
+.decor-features {
+  left: 8%;
+  top: 6%;
+  width: 420px;
+  max-width: 50%;
+  opacity: 0.1;
+}
+
+/* Footer: centralizada, invertida em tamanho menor */
+.decor-footer {
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  width: 360px;
+  max-width: 60%;
+  opacity: 0.08;
+}
+
+@media (max-width: 900px) {
+  .decor-header {
+    width: 80px;
+    right: 6%;
+    top: 6%;
+    opacity: 0.08;
+  }
+  .decor-features {
+    display: none; /* esconder em telas pequenas para não atrapalhar leitura */
+  }
+  .decor-footer {
+    width: 180px;
+    bottom: 4%;
+  }
 }
 
 .features-grid {
