@@ -524,8 +524,7 @@ const ModelViewerManager = {
     }
 
     // Caminho para o modelo 3D (suporta .glb, .gltf, .fbx)
-    const modelPath =
-      "images/project.fbx/ccc62184-0a0c-45bc-a6cd-69e75500eb99.fbx";
+    const modelPath = "images/bb-2.glb";
 
     try {
       this.viewer = new Model3DViewer("model-viewer-container", modelPath);
