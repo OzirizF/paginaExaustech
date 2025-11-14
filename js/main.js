@@ -511,6 +511,31 @@ const SVGManager = {
 };
 
 // ========================================
+// 3D MODEL VIEWER MANAGER
+// ========================================
+const ModelViewerManager = {
+  viewer: null,
+
+  init() {
+    // Verificar se o container existe
+    const container = document.getElementById("model-viewer-container");
+    if (!container || typeof Model3DViewer === "undefined") {
+      return;
+    }
+
+    // Caminho para o modelo 3D (suporta .glb, .gltf, .fbx)
+    const modelPath =
+      "images/project.fbx/ccc62184-0a0c-45bc-a6cd-69e75500eb99.fbx";
+
+    try {
+      this.viewer = new Model3DViewer("model-viewer-container", modelPath);
+    } catch (error) {
+      console.error("Erro ao inicializar visualizador 3D:", error);
+    }
+  },
+};
+
+// ========================================
 // INITIALIZATION
 // ========================================
 document.addEventListener("DOMContentLoaded", () => {
@@ -524,6 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
   InstallationTabsManager.init();
   BackToTopManager.init();
   SVGManager.init();
+  ModelViewerManager.init(); // Inicializar visualizador 3D
 
   // Re-run accordion setup on resize (for mobile)
   window.addEventListener("resize", () => {

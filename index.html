@@ -214,10 +214,10 @@
           </p>
         </div>
         <div class="about-image reveal" style="transition-delay: 0.2s">
-          <img
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920&auto=format&fit=crop"
-            alt="Painel elétrico com sistema de monitoramento"
-          />
+          <!-- Visualizador 3D -->
+          <div id="model-viewer-container" class="model-3d-viewer">
+            <!-- O modelo 3D será carregado aqui -->
+          </div>
         </div>
       </div>
     </section>
@@ -910,7 +910,14 @@
       aria-hidden="true"
     ></div>
 
+    <!-- Three.js Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
+
     <!-- JavaScript -->
+    <script src="js/model-viewer.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
