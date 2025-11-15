@@ -113,6 +113,14 @@
               </svg>
             </button>
           </div>
+          <button
+            id="openServerPopupHeader"
+            class="btn"
+            title="Abrir exemplo de servidor"
+            style="margin-left: 12px"
+          >
+            Servidor
+          </button>
 
           <nav id="mainNav" role="navigation" aria-label="Navegação Principal">
             <ul class="primary-nav">
@@ -214,10 +222,14 @@
           </p>
         </div>
         <div class="about-image reveal" style="transition-delay: 0.2s">
-          <!-- Visualizador 3D -->
-          <div id="model-viewer-container" class="model-3d-viewer">
-            <!-- O modelo 3D será carregado aqui -->
-          </div>
+          <!-- Imagem do painel substituindo o 3D -->
+          <img
+            src="images/painel.png"
+            alt="Painel elétrico"
+            class="example-image"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </section>
@@ -596,10 +608,22 @@
             </li>
           </ul>
         </div>
-        <div class="about-image reveal" style="transition-delay: 0.2s">
+        <div
+          class="about-image reveal"
+          style="transition-delay: 0.2s; position: relative"
+        >
+          <!-- Marca d'água: ícone do projeto em baixa opacidade -->
           <img
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop"
-            alt="Detalhes técnicos do sistema Exaustech"
+            src="images/icon.svg"
+            alt=""
+            aria-hidden="true"
+            style="
+              opacity: 0.08;
+              width: 100%;
+              max-width: 520px;
+              object-fit: contain;
+              filter: saturate(0%);
+            "
           />
         </div>
       </div>
@@ -910,13 +934,30 @@
       aria-hidden="true"
     ></div>
 
-    <!-- Three.js Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-
     <!-- JavaScript -->
-    <script src="js/model-viewer.js"></script>
     <script src="js/main.js"></script>
+    <!-- Server example popup -->
+    <div id="serverPopup" class="server-popup" aria-hidden="true">
+      <div class="server-popup-backdrop" id="serverPopupBackdrop"></div>
+      <div
+        class="server-popup-content"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Exemplo de Central de Monitoramento"
+      >
+        <header class="server-popup-header">
+          <h3 style="margin: 0">Exemplo: Central de Monitoramento</h3>
+          <button id="closeServerPopup" class="btn" aria-label="Fechar">
+            Fechar
+          </button>
+        </header>
+        <iframe
+          id="serverPopupFrame"
+          src="images/indexs.html"
+          title="Central de Monitoramento"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
   </body>
 </html>

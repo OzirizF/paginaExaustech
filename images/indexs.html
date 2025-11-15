@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Central de Monitoramento - 10 Sistemas exauSentinel</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #000000;
+        color: #e5e5e5;
+        padding: 10px;
+        min-height: 100vh;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 15px;
+        padding: 12px;
+        background: linear-gradient(
+          135deg,
+          #e55300 0%,
+          #ff6a00 35%,
+          #ffb300 70%,
+          #ffd43b 100%
+        );
+        border-radius: 8px;
+      }
+
+      .header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+        color: #000000;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+      }
+
+      .header .timestamp {
+        font-size: 0.75rem;
+        color: #000000;
+        opacity: 0.8;
+      }
+
+      .systems-container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        max-width: 100%;
+      }
+
+      .system-row {
+        background: #0a0a0a;
+        border-radius: 6px;
+        padding: 8px 12px;
+        display: grid;
+        grid-template-columns: 110px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+      }
+
+      .system-row:hover {
+        background: #1a1a1a;
+      }
+
+      .system-row.alert {
+        border-left-color: #e74c1b;
+        background: rgba(231, 76, 27, 0.05);
+      }
+
+      .system-row.ok {
+        border-left-color: #ffb300;
+      }
+
+      .system-row.offline {
+        border-left-color: #4a4a4a;
+        opacity: 0.6;
+      }
+
+      .system-name {
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: #ffd43b;
+      }
+
+      .system-name .ip {
+        font-size: 0.65rem;
+        color: #b8b8b8;
+        font-weight: normal;
+        display: block;
+        margin-top: 2px;
+      }
+
+      .system-info {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .metric {
+        display: flex;
+        align-items: baseline;
+        gap: 3px;
+      }
+
+      .metric-label {
+        font-size: 0.65rem;
+        color: #b8b8b8;
+      }
+
+      .metric-value {
+        font-size: 0.85rem;
+        font-weight: bold;
+      }
+
+      .metric-value.temp {
+        color: #ff6a00;
+      }
+      .metric-value.hum {
+        color: #ffb300;
+      }
+      .metric-value.rpm {
+        color: #ffd43b;
+      }
+
+      .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-weight: 600;
+      }
+
+      .status-indicator.online {
+        background: rgba(255, 179, 0, 0.15);
+        color: #ffb300;
+      }
+
+      .status-indicator.offline {
+        background: rgba(74, 74, 74, 0.3);
+        color: #b8b8b8;
+      }
+
+      .status-indicator.alert {
+        background: rgba(231, 76, 27, 0.2);
+        color: #e74c1b;
+        animation: blink 1.5s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+
+      .wifi-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .wifi-dot.connected {
+        background: #ffb300;
+        box-shadow: 0 0 6px #ffb300;
+      }
+
+      .wifi-dot.disconnected {
+        background: #e74c1b;
+      }
+
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-bottom: 15px;
+      }
+
+      .summary-card {
+        background: #0a0a0a;
+        border-radius: 6px;
+        padding: 10px;
+        text-align: center;
+        border: 1px solid rgba(255, 106, 0, 0.2);
+      }
+
+      .summary-card h3 {
+        font-size: 0.65rem;
+        color: #b8b8b8;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .summary-card .value {
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: linear-gradient(135deg, #ff6a00, #ffd43b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .btn {
+        padding: 4px 8px;
+        border: 1px solid rgba(255, 106, 0, 0.3);
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: all 0.2s;
+        background: transparent;
+        color: #ff6a00;
+        font-weight: 600;
+      }
+
+      .btn:hover {
+        background: rgba(255, 106, 0, 0.1);
+        border-color: #ff6a00;
+        transform: translateY(-1px);
+      }
+
+      @media (max-width: 1200px) {
+        .system-row {
+          grid-template-columns: 1fr;
+        }
+
+        .summary {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>🏭 Central de Monitoramento Exaustech</h1>
+      <div class="timestamp">
+        Última atualização: <span id="lastUpdate">--:--:--</span>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>SISTEMAS ONLINE</h3>
+        <div class="value" id="systemsOnline">0/10</div>
+      </div>
+      <div class="summary-card">
+        <h3>ALERTAS</h3>
+        <div class="value" id="activeAlerts">0</div>
+      </div>
+      <div class="summary-card">
+        <h3>TEMP MÉDIA</h3>
+        <div class="value" id="avgTemp">--°C</div>
+      </div>
+      <div class="summary-card">
+        <h3>RPM MÉDIO</h3>
+        <div class="value" id="avgRpm">--</div>
+      </div>
+    </div>
+
+    <div class="systems-container" id="systemsContainer">
+      <!-- Systems will be populated by JavaScript -->
+    </div>
+
+    <script>
+      // Configuração dos sistemas
+      const systems = [
+        { id: 1, name: "exauSentinel-painel-1", ip: "192.168.1.101" },
+        { id: 2, name: "exauSentinel-painel-2", ip: "192.168.1.102" },
+        { id: 3, name: "exauSentinel-painel-3", ip: "192.168.1.103" },
+        { id: 4, name: "exauSentinel-painel-4", ip: "192.168.1.104" },
+        { id: 5, name: "exauSentinel-painel-5", ip: "192.168.1.105" },
+        { id: 6, name: "exauSentinel-painel-6", ip: "192.168.1.106" },
+        { id: 7, name: "exauSentinel-painel-7", ip: "192.168.1.107" },
+        { id: 8, name: "exauSentinel-painel-8", ip: "192.168.1.108" },
+        { id: 9, name: "exauSentinel-painel-9", ip: "192.168.1.109" },
+        { id: 10, name: "exauSentinel-painel-10", ip: "192.168.1.110" },
+      ];
+
+      let systemsData = {};
+
+      // Gerar dados aleatórios para simulação
+      function generateRandomData(systemId) {
+        const baseTemp = 20 + systemId * 2;
+        const baseRpm = 800 + systemId * 100;
+
+        const temp = Math.round(baseTemp + (Math.random() * 15 - 7.5));
+        const hum = Math.round(30 + Math.random() * 40);
+        const rpm = Math.round(baseRpm + (Math.random() * 400 - 200));
+        const online = Math.random() > 0.1; // 90% chance de estar online
+
+        const tempAlert = temp > 45 || temp < 15;
+        const humAlert = hum > 80 || hum < 20;
+        const rpmAlert = rpm < 500 || rpm > 11000;
+
+        const hasAlert = online && (tempAlert || humAlert || rpmAlert);
+        const status = !online ? "offline" : hasAlert ? "alert" : "ok";
+
+        return {
+          temperatura: temp,
+          umidade: hum,
+          rpm: rpm,
+          online: online,
+          status: status,
+          hasAlert: hasAlert,
+          uptime: Math.floor(Math.random() * 86400000),
+          wifi: {
+            rssi: -50 - Math.floor(Math.random() * 40),
+          },
+        };
+      }
+
+      // Criar linha do sistema
+      function createSystemRow(system) {
+        const data = systemsData[system.id] || generateRandomData(system.id);
+
+        const statusClass = data.status;
+        const statusText = data.online
+          ? data.hasAlert
+            ? "⚠ ALERTA"
+            : "✓ OK"
+          : "✗ OFF";
+        const statusBadgeClass = data.online
+          ? data.hasAlert
+            ? "alert"
+            : "online"
+          : "offline";
+
+        return `
+                <div class="system-row ${statusClass}" data-id="${system.id}">
+                    <div class="system-name">
+                        ${system.name}
+                        <span class="ip">${system.ip}</span>
+                    </div>
+                    
+                    <div class="system-info">
+                        <div class="metric">
+                            <span class="metric-label">T:</span>
+                            <span class="metric-value temp">${
+                              data.temperatura
+                            }°C</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">H:</span>
+                            <span class="metric-value hum">${
+                              data.umidade
+                            }%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">RPM:</span>
+                            <span class="metric-value rpm">${data.rpm.toLocaleString()}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">WiFi:</span>
+                            <span class="metric-value" style="font-size: 0.75rem; color: #b8b8b8;">${
+                              data.wifi.rssi
+                            }dBm</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div class="status-indicator ${statusBadgeClass}">
+                            <span class="wifi-dot ${
+                              data.online ? "connected" : "disconnected"
+                            }"></span>
+                            ${statusText}
+                        </div>
+                        <button class="btn" onclick="openConfig(${
+                          system.id
+                        })">⚙</button>
+                    </div>
+                </div>
+            `;
+      }
+
+      // Atualizar todos os sistemas
+      function updateSystems() {
+        systems.forEach((system) => {
+          systemsData[system.id] = generateRandomData(system.id);
+        });
+
+        const container = document.getElementById("systemsContainer");
+        container.innerHTML = systems.map(createSystemRow).join("");
+
+        updateSummary();
+        updateTimestamp();
+      }
+
+      // Atualizar resumo
+      function updateSummary() {
+        const onlineCount = Object.values(systemsData).filter(
+          (d) => d.online
+        ).length;
+        const alertCount = Object.values(systemsData).filter(
+          (d) => d.hasAlert
+        ).length;
+
+        const temps = Object.values(systemsData)
+          .filter((d) => d.online)
+          .map((d) => d.temperatura);
+        const avgTemp =
+          temps.length > 0
+            ? Math.round(temps.reduce((a, b) => a + b, 0) / temps.length)
+            : 0;
+
+        const rpms = Object.values(systemsData)
+          .filter((d) => d.online)
+          .map((d) => d.rpm);
+        const avgRpm =
+          rpms.length > 0
+            ? Math.round(rpms.reduce((a, b) => a + b, 0) / rpms.length)
+            : 0;
+
+        document.getElementById(
+          "systemsOnline"
+        ).textContent = `${onlineCount}/10`;
+        document.getElementById("activeAlerts").textContent = alertCount;
+        document.getElementById("avgTemp").textContent = `${avgTemp}°C`;
+        document.getElementById("avgRpm").textContent = avgRpm.toLocaleString();
+      }
+
+      // Atualizar timestamp
+      function updateTimestamp() {
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString("pt-BR");
+        document.getElementById("lastUpdate").textContent = timeStr;
+      }
+
+      // Funções de ação
+      function openConfig(systemId) {
+        const system = systems.find((s) => s.id === systemId);
+        // Em produção, abrir em nova aba: window.open(`http://${system.ip}`, '_blank');
+        alert(
+          `⚙️ ${system.name}\n${system.ip}\n\n(Em produção: http://${system.ip})`
+        );
+      }
+
+      // Inicialização
+      updateSystems();
+
+      // Atualizar a cada 2 segundos
+      setInterval(updateSystems, 2000);
+    </script>
+  </body>
+</html>

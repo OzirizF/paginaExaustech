@@ -535,6 +535,67 @@ const ModelViewerManager = {
 };
 
 // ========================================
+// SERVER POPUP MANAGER
+// ========================================
+const ServerPopupManager = {
+  popup: null,
+  backdrop: null,
+  iframe: null,
+  openButtons: [],
+  closeButton: null,
+
+  init() {
+    this.popup = document.getElementById("serverPopup");
+    this.backdrop = document.getElementById("serverPopupBackdrop");
+    this.iframe = document.getElementById("serverPopupFrame");
+    this.closeButton = document.getElementById("closeServerPopup");
+
+    // buttons that open the popup (header button added)
+    const headerBtn = document.getElementById("openServerPopupHeader");
+    if (headerBtn) this.openButtons.push(headerBtn);
+
+    this.openButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.open();
+      });
+    });
+
+    if (this.closeButton)
+      this.closeButton.addEventListener("click", () => this.close());
+    if (this.backdrop)
+      this.backdrop.addEventListener("click", () => this.close());
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") this.close();
+    });
+  },
+
+  open() {
+    if (!this.popup) return;
+    this.popup.setAttribute("aria-hidden", "false");
+    // reload iframe to ensure fresh content
+    if (this.iframe) {
+      // set src again to force reload
+      const src = this.iframe.getAttribute("src");
+      this.iframe.setAttribute("src", src);
+    }
+    // lock scroll
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+  },
+
+  close() {
+    if (!this.popup) return;
+    this.popup.setAttribute("aria-hidden", "true");
+    // stop iframe media by clearing src (optional): keep src to allow quick reopen
+    // unlock scroll
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+  },
+};
+
+// ========================================
 // INITIALIZATION
 // ========================================
 document.addEventListener("DOMContentLoaded", () => {
@@ -549,6 +610,7 @@ document.addEventListener("DOMContentLoaded", () => {
   BackToTopManager.init();
   SVGManager.init();
   ModelViewerManager.init(); // Inicializar visualizador 3D
+  ServerPopupManager.init(); // Inicializar popup de exemplo de servidor
 
   // Re-run accordion setup on resize (for mobile)
   window.addEventListener("resize", () => {
